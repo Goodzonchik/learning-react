@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 
 import './Galery.css';
 
-export default function Galery(props: any) {
+interface GaleryModel {
+  images: string[];
+}
+
+export default function Galery(props: GaleryModel) {
   //TODO
   /*
     Верстка (подсветка активной картинки, скролл, отсутпы, hover)

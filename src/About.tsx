@@ -42,16 +42,23 @@ export default function About() {
         <div>
           <h2>{info.name}</h2>
           <div>{info.summary}</div>
-          <ItemField title={'founder'} value={info.founder}></ItemField>
-          <ItemField title={'founded'} value={info.founded}></ItemField>
-          <ItemField title={'employees'} value={info.employees}></ItemField>
           <ItemField
-            title={'valuation'}
-            value={`${info.valuation} $`}
+            data={{ title: 'founder', value: info.founder }}
           ></ItemField>
           <ItemField
-            title={'headquarters'}
-            value={`${info.headquarters.state}, ${info.headquarters.city}, ${info.headquarters.address}`}
+            data={{ title: 'founded', value: info.founded }}
+          ></ItemField>
+          <ItemField
+            data={{ title: 'employees', value: info.employees }}
+          ></ItemField>
+          <ItemField
+            data={{ title: 'valuation', value: info.valuation }}
+          ></ItemField>
+          <ItemField
+            data={{
+              title: 'headquarters',
+              value: `${info.headquarters.state}, ${info.headquarters.city}, ${info.headquarters.address}`,
+            }}
           ></ItemField>
         </div>
       ) : (

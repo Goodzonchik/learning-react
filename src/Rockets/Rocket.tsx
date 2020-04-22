@@ -73,25 +73,38 @@ export default function Rocket() {
             </div>
 
             <div style={styles.items}>
-              <ItemField title={'company'} value={rocket.company}></ItemField>
-              <ItemField title={'country'} value={rocket.country}></ItemField>
               <ItemField
-                title={'cost per launch'}
-                value={`${moneyFilter(rocket.cost_per_launch)}`}
+                data={{ title: 'company', value: rocket.company }}
               ></ItemField>
               <ItemField
-                title={'active'}
-                value={rocket.active ? 'true' : 'false'}
-              ></ItemField>
-              <ItemField title={'stages'} value={rocket.stages}></ItemField>
-              <ItemField title={'boosters'} value={rocket.boosters}></ItemField>
-              <ItemField
-                title={'mass'}
-                value={`${rocket.mass.kg}kg/${rocket.mass.lb}lb`}
+                data={{ title: 'country', value: rocket.country }}
               ></ItemField>
               <ItemField
-                title={'first flight'}
-                value={rocket.first_flight}
+                data={{
+                  title: 'cost per launch',
+                  value: `${moneyFilter(rocket.cost_per_launch)}`,
+                }}
+              ></ItemField>
+              <ItemField
+                data={{
+                  title: 'active',
+                  value: rocket.active ? 'true' : 'false',
+                }}
+              ></ItemField>
+              <ItemField
+                data={{ title: 'stages', value: rocket.stages }}
+              ></ItemField>
+              <ItemField
+                data={{ title: 'boosters', value: rocket.boosters }}
+              ></ItemField>
+              <ItemField
+                data={{
+                  title: 'mass',
+                  value: `${rocket.mass.kg}kg/${rocket.mass.lb}lb`,
+                }}
+              ></ItemField>
+              <ItemField
+                data={{ title: 'first flight', value: rocket.first_flight }}
               ></ItemField>
             </div>
           </div>

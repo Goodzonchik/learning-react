@@ -2,11 +2,18 @@ import * as React from 'react';
 
 import './ItemField.css';
 
-export default function ItemField(props: any) {
+interface Field {
+  data: {
+    title: string;
+    value: string | number | undefined;
+  };
+}
+
+export default function ItemField(props: Field) {
   return (
     <div className={'item-container'}>
-      <strong className={'item-label'}>{props.title}:</strong>
-      <span>{props.value}</span>
+      <strong className={'item-label'}>{props.data.title}:</strong>
+      <span>{props.data.value}</span>
     </div>
   );
 }

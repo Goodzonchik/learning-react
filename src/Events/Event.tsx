@@ -28,12 +28,10 @@ export default function Event() {
           <h2>{event.title}</h2>
           <div>{event.details}</div>
           <ItemField
-            title={'event date (utc)'}
-            value={event?.event_date_utc}
+            data={{ title: 'event date (utc)', value: event?.event_date_utc }}
           ></ItemField>
           <ItemField
-            title={'flight number'}
-            value={event?.flight_number}
+            data={{ title: 'flight number', value: event?.flight_number }}
           ></ItemField>
         </div>
       ) : (

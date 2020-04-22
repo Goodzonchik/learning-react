@@ -2,7 +2,12 @@ import * as React from 'react';
 
 import './RocketSize.css';
 
-export default function RocketSize(props: any) {
+interface RocketSizeField {
+  diameter: string;
+  height: string;
+}
+
+export default function RocketSize(props: RocketSizeField) {
   return (
     <div className={'rocket-container'}>
       <div className={'rocket'}>
