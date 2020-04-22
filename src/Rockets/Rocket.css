@@ -1,0 +1,14 @@
+.page-header {
+  padding: 0 20px;
+}
+
+.rocket-fields-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.rocket-fields {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1em;
+}

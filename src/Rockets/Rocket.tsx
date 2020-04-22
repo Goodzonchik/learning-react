@@ -5,21 +5,7 @@ import ItemField from '../Shared/ItemField/ItemField';
 import RocketSize from '../Shared/RocketSize/RocketSize';
 import Galery from '../Shared/Galery/Galery';
 import Loader from '../Shared/Loader';
-
-const styles = {
-  container: {
-    display: 'flex',
-    justifyContent: 'space-around',
-  },
-  items: {
-    display: 'flex',
-    flexDirection: 'column' as 'column',
-    paddingTop: '1em',
-  },
-  header: {
-    padding: '0 20px',
-  },
-};
+import './Rocket.css';
 
 interface Rocket {
   rocket_name: string;
@@ -60,11 +46,11 @@ export default function Rocket() {
     <div>
       {rocket ? (
         <div>
-          <div style={styles.header}>
+          <div className={'page-header'}>
             <h2>{rocket.rocket_name}</h2>
             <div>{rocket.description}</div>
           </div>
-          <div style={styles.container}>
+          <div className={'rocket-fields-container'}>
             <div>
               <RocketSize
                 diameter={`${rocket.diameter.meters}meters/${rocket.diameter.feet}feet`}
@@ -72,7 +58,7 @@ export default function Rocket() {
               ></RocketSize>
             </div>
 
-            <div style={styles.items}>
+            <div className={'rocket-fields'}>
               <ItemField
                 data={{ title: 'company', value: rocket.company }}
               ></ItemField>
@@ -110,7 +96,7 @@ export default function Rocket() {
           </div>
 
           <div>
-            <Galery images={rocket.flickr_images || []}></Galery>
+            <Galery images={rocket.flickr_images}></Galery>
           </div>
         </div>
       ) : (
