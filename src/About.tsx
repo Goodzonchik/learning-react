@@ -1,51 +1,62 @@
 import React, { useEffect } from 'react';
 import { fetchData } from './Utils/dataHelper';
 import ItemField from './Shared/ItemField/ItemField';
+import Loader from './Shared/Loader';
 
 const styles = {
   container: {
     display: 'block',
-    padding: '20px',
+    padding: '1em',
+    margin: '1em',
     width: '100%',
     height: '100%',
   },
-  ship: {
-    margin: '1rem',
-    padding: '1rem',
-    border: '1px solid #c3c3c3',
-    borderRadius: '4px',
-  },
 };
 
+interface AboutCompany {
+  name: string;
+  summary: string;
+  founder: string;
+  founded: string;
+  employees: number;
+  valuation: number;
+  headquarters: {
+    state: string;
+    city: string;
+    address: string;
+  };
+}
+
 export default function About() {
-  const [info, setInfo] = React.useState([]);
+  const [info, setInfo] = React.useState<AboutCompany>();
 
   useEffect(() => {
-    fetchData('info').then((data: any) => {
+    fetchData('info').then((data: AboutCompany) => {
       setInfo(data);
     });
   }, []);
 
   return (
     <div style={styles.container}>
-      <h2>{(info as any)?.name}</h2>
-      <div>{(info as any)?.summary}</div>
-      <ItemField title={'founder'} value={(info as any)?.founder}></ItemField>
-      <ItemField title={'founded'} value={(info as any)?.founded}></ItemField>
-      <ItemField
-        title={'employees'}
-        value={(info as any)?.employees}
-      ></ItemField>
-      <ItemField
-        title={'valuation'}
-        value={`${(info as any)?.valuation} $`}
-      ></ItemField>
-      <ItemField
-        title={'headquarters'}
-        value={`${(info as any)?.headquarters?.state}, ${
-          (info as any)?.headquarters?.city
-        }, ${(info as any)?.headquarters?.address}`}
-      ></ItemField>
+      {info ? (
+        <div>
+          <h2>{info.name}</h2>
+          <div>{info.summary}</div>
+          <ItemField title={'founder'} value={info.founder}></ItemField>
+          <ItemField title={'founded'} value={info.founded}></ItemField>
+          <ItemField title={'employees'} value={info.employees}></ItemField>
+          <ItemField
+            title={'valuation'}
+            value={`${info.valuation} $`}
+          ></ItemField>
+          <ItemField
+            title={'headquarters'}
+            value={`${info.headquarters.state}, ${info.headquarters.city}, ${info.headquarters.address}`}
+          ></ItemField>
+        </div>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 }

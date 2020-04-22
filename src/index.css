@@ -36,15 +36,27 @@ code {
   height: '100%';
 }
 
+.list-container > a {
+  text-decoration: none;
+}
+
 .list-container-item {
   margin: 1rem;
   padding: 1rem;
   border: 1px solid #c3c3c3;
   border-radius: 4px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .list-container-item:hover {
   background-color: #f1f1f1;
-  color: #fff;
+  color: #000000;
+}
+
+.entity-container {
+  display: block;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
 }
