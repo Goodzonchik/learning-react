@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { fetchData } from '../Utils/dataHelper';
 import { useParams } from 'react-router-dom';
-import ItemField from '../Shared/ItemField';
+import ItemField from '../Shared/ItemField/ItemField';
 
 export default function Event() {
   const { eventId } = useParams();
@@ -11,7 +11,7 @@ export default function Event() {
     fetchData(`history/${eventId}`).then((data: any) => {
       setEvent(data);
     });
-  }, []);
+  }, [eventId]);
 
   return (
     <div>

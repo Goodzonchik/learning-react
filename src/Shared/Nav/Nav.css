@@ -1,0 +1,18 @@
+.nav {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+}
+.nav-link {
+  margin: 0.5rem 1rem;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.active-link {
+  color: red;
+}
+
+.active-link:hover {
+  color: #c10000;
+}

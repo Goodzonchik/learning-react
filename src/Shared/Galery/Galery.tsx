@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+import './Galery.css';
+
 export default function Galery(props: any) {
   //TODO
   /*
@@ -32,30 +34,10 @@ export default function Galery(props: any) {
   }
 
   return (
-    <div
-      style={{
-        border: '1px solid #efefef',
-        padding: '0.5em',
-        backgroundColor: '#efefef',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          width: '100%',
-        }}
-      >
+    <div className={'galery'}>
+      <div className={'galery-container'}>
         <div
-          style={{
-            width: '10%',
-            minHeight: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            textAlign: 'center',
-          }}
+          className={'galery-button'}
           onClick={() => {
             back();
           }}
@@ -63,22 +45,12 @@ export default function Galery(props: any) {
           Prev
         </div>
         <img
-          style={{
-            width: '90%',
-            height: '100%',
-          }}
+          className={'galery-image-active'}
           src={props?.images[active]}
+          alt='{image}'
         ></img>
         <div
-          style={{
-            width: '10%',
-            minHeight: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            textAlign: 'center',
-          }}
+          className={'galery-button'}
           onClick={() => {
             forward();
           }}
@@ -86,30 +58,21 @@ export default function Galery(props: any) {
           Next
         </div>
       </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'flex-start',
-          overflow: 'auto',
-          margin: '0.5em 0',
-          backgroundColor: '#dedede',
-          padding: '0.5em',
-        }}
-      >
+      <div className={'galery-collection-container'}>
         {props?.images?.map((image: string) => {
           return (
             <img
-              style={{
-                maxWidth: '150px',
-                maxHeight: '100px',
-                margin: '0 1em',
-                cursor: 'pointer',
-              }}
+              className={
+                image === props.images[active]
+                  ? 'galery-collection-image active-image'
+                  : 'galery-collection-image'
+              }
               key={image}
               onClick={() => {
                 setCurrent(image);
               }}
               src={image}
+              alt='{image}'
             ></img>
           );
         })}

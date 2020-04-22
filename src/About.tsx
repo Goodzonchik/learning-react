@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { fetchData } from './Utils/dataHelper';
-import ItemField from './Shared/ItemField';
+import ItemField from './Shared/ItemField/ItemField';
 
 const styles = {
   container: {

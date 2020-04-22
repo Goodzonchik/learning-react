@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { fetchData, moneyFilter } from '../Utils/dataHelper';
 import { useParams } from 'react-router-dom';
-import ItemField from '../Shared/ItemField';
-import RocketSize from '../Shared/RocketSize';
-import Galery from '../Shared/Galery';
+import ItemField from '../Shared/ItemField/ItemField';
+import RocketSize from '../Shared/RocketSize/RocketSize';
+import Galery from '../Shared/Galery/Galery';
 
 const styles = {
   container: {
@@ -28,7 +28,7 @@ export default function Rocket() {
     fetchData(`rockets/${rocketId}`).then((data: any) => {
       setRocket(data);
     });
-  }, []);
+  }, [rocketId]);
 
   return (
     <div>

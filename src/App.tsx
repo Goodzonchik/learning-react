@@ -1,22 +1,15 @@
 import * as React from 'react';
-import Nav from './Core/Nav';
+import Nav from './Shared/Nav/Nav';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import About from './About';
 import RocketContainer from './Rockets/RocketContainer';
 import EventContainer from './Events/EventContainer';
 
-const styles = {
-  app: {
-    width: '1024px',
-    minHeight: '100vh',
-    margin: '0 auto',
-    backgroundColor: '#fff',
-  },
-};
+import './App.css';
 
 export default function App() {
   return (
-    <div style={styles.app}>
+    <div className={'app'}>
       <Router>
         <Nav />
         <Switch>
