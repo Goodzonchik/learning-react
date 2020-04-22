@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Nav from './Shared/Nav/Nav';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import About from './About';

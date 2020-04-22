@@ -31,9 +31,7 @@ export default function Galery(props: GaleryModel) {
   }
 
   function setCurrent(image: string) {
-    const index = (props.images as Array<string>).findIndex(
-      (img) => img === image
-    );
+    const index = props.images.findIndex((img) => img === image);
     setActive(index);
   }
 
