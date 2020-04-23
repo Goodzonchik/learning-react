@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 
 import './Galery.css';
+import GaleryPreview from './GaleryPreview';
 
 interface GaleryModel {
   images: string[];
@@ -20,62 +21,48 @@ export default function Galery(props: GaleryModel) {
     setActive(0);
   }, []);
 
-  function back() {
+  const back = useCallback(() => {
     const nextIndex = active - 1 >= 0 ? active - 1 : props.images.length - 1;
     setActive(nextIndex);
-  }
+  }, [active, props.images]);
 
-  function forward() {
+  const forward = useCallback(() => {
     const nextIndex = active + 1 <= props.images.length - 1 ? active + 1 : 0;
     setActive(nextIndex);
-  }
+  }, [active, props.images]);
 
-  function setCurrent(image: string) {
-    const index = props.images.findIndex((img) => img === image);
-    setActive(index);
-  }
+  const setCurrent = useCallback(
+    (image) => {
+      const index = props.images.findIndex((img) => img === image);
+      setActive(index);
+    },
+    [props.images]
+  );
 
   return (
     <div className={'galery'}>
       <div className={'galery-container'}>
-        <div
-          className={'galery-button'}
-          onClick={() => {
-            back();
-          }}
-        >
+        <div className={'galery-button'} onClick={back}>
           Prev
         </div>
         <img
           className={'galery-image-active'}
-          src={props?.images[active]}
+          src={props.images[active]}
           alt='{image}'
         ></img>
-        <div
-          className={'galery-button'}
-          onClick={() => {
-            forward();
-          }}
-        >
+        <div className={'galery-button'} onClick={forward}>
           Next
         </div>
       </div>
       <div className={'galery-collection-container'}>
-        {props?.images?.map((image: string) => {
+        {props?.images?.map((image: string, index) => {
           return (
-            <img
-              className={
-                image === props.images[active]
-                  ? 'galery-collection-image active-image'
-                  : 'galery-collection-image'
-              }
+            <GaleryPreview
+              image={image}
+              isActive={index === active}
+              setCurrent={setCurrent}
               key={image}
-              onClick={() => {
-                setCurrent(image);
-              }}
-              src={image}
-              alt='{image}'
-            ></img>
+            />
           );
         })}
       </div>

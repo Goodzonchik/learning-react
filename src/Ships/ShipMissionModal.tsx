@@ -38,7 +38,7 @@ export default function ShipMissionModal(props: ShipMissionsShort) {
             <thead className={'table-head'}>
               <tr>
                 <td>Name</td>
-                <td>Flight</td>
+                <td>Flight number</td>
               </tr>
             </thead>
             <tbody>{shipsList}</tbody>

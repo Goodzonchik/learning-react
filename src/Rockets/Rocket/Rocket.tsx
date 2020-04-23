@@ -3,12 +3,12 @@ import {
   fetchData,
   moneyFormatter,
   booleanFormatter,
-} from '../Utils/dataHelper';
+} from '../../Utils/dataHelper';
 import { useParams } from 'react-router-dom';
-import ItemField from '../Shared/ItemField/ItemField';
-import RocketSize from '../Shared/RocketSize/RocketSize';
-import Galery from '../Shared/Galery/Galery';
-import Loader from '../Shared/Loader';
+import ItemField from '../../Shared/ItemField/ItemField';
+import RocketSize from '../../Shared/RocketSize/RocketSize';
+import Galery from '../../Shared/Galery/Galery';
+import Loader from '../../Shared/Loader';
 import './Rocket.css';
 
 interface Rocket {
