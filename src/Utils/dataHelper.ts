@@ -5,11 +5,15 @@ export const fetchData = (url: string): Promise<any> =>
     return response.json();
   });
 
-export const moneyFilter = (value: number = 0): string => {
+export const moneyFormatter = (value: number = 0): string => {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 2,
   });
   return formatter.format(value);
+};
+
+export const booleanFormatter = (value: boolean): string => {
+  return value.toString();
 };

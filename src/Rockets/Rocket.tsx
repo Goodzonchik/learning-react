@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
-import { fetchData, moneyFilter } from '../Utils/dataHelper';
+import {
+  fetchData,
+  moneyFormatter,
+  booleanFormatter,
+} from '../Utils/dataHelper';
 import { useParams } from 'react-router-dom';
 import ItemField from '../Shared/ItemField/ItemField';
 import RocketSize from '../Shared/RocketSize/RocketSize';
@@ -68,13 +72,13 @@ export default function Rocket() {
               <ItemField
                 data={{
                   title: 'cost per launch',
-                  value: `${moneyFilter(rocket.cost_per_launch)}`,
+                  value: `${moneyFormatter(rocket.cost_per_launch)}`,
                 }}
               ></ItemField>
               <ItemField
                 data={{
                   title: 'active',
-                  value: rocket.active ? 'true' : 'false',
+                  value: booleanFormatter(rocket.active),
                 }}
               ></ItemField>
               <ItemField

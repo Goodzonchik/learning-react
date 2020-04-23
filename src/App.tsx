@@ -6,6 +6,7 @@ import RocketContainer from './Rockets/RocketContainer';
 import EventContainer from './Events/EventContainer';
 
 import './App.css';
+import Ships from './Ships/Ships';
 
 export default function App() {
   return (
@@ -19,8 +20,11 @@ export default function App() {
           <Route path='/history'>
             <EventContainer />
           </Route>
-          <Route path='/rocket'>
+          <Route path='/rockets'>
             <RocketContainer />
+          </Route>
+          <Route path='/ships'>
+            <Ships />
           </Route>
         </Switch>
       </Router>

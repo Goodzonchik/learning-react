@@ -10,18 +10,17 @@ export default function Nav() {
       title: 'About company',
     },
     { url: 'history', title: 'Events' },
-    { url: 'rocket', title: 'Rockets' },
+    { url: 'rockets', title: 'Rockets' },
+    { url: 'ships', title: 'Ships' },
   ];
 
-  return (
-    <ul className={'nav'}>
-      {links.map((item) => (
-        <li className={'nav-link'} key={item.url}>
-          <NavLink to={'/' + item.url} activeClassName='active-link'>
-            {item.title}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
-  );
+  const linkList = links.map((item) => (
+    <li className={'nav-link'} key={item.url}>
+      <NavLink to={'/' + item.url} activeClassName='active-link'>
+        {item.title}
+      </NavLink>
+    </li>
+  ));
+
+  return <ul className={'nav'}>{linkList}</ul>;
 }
