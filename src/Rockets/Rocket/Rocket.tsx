@@ -3,6 +3,7 @@ import {
   fetchData,
   moneyFormatter,
   booleanFormatter,
+  numberFormatter,
 } from '../../Utils/dataHelper';
 import { useParams } from 'react-router-dom';
 import ItemField from '../../Shared/ItemField/ItemField';
@@ -90,7 +91,9 @@ export default function Rocket() {
               <ItemField
                 data={{
                   title: 'mass',
-                  value: `${rocket.mass.kg}kg/${rocket.mass.lb}lb`,
+                  value: `${numberFormatter(
+                    rocket.mass.kg
+                  )}kg/${numberFormatter(rocket.mass.lb)}lb`,
                 }}
               ></ItemField>
               <ItemField

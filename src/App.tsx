@@ -7,27 +7,31 @@ import EventContainer from './Events/EventContainer';
 
 import './App.css';
 import Ships from './Ships/Ships';
+import Footer from './Shared/Footer/Footer';
 
 export default function App() {
   return (
     <div className={'app'}>
-      <Router>
-        <Nav />
-        <Switch>
-          <Route path='/about'>
-            <About />
-          </Route>
-          <Route path='/history'>
-            <EventContainer />
-          </Route>
-          <Route path='/rockets'>
-            <RocketContainer />
-          </Route>
-          <Route path='/ships'>
-            <Ships />
-          </Route>
-        </Switch>
-      </Router>
+      <div className={'content'}>
+        <Router>
+          <Nav />
+          <Switch>
+            <Route path='/about'>
+              <About />
+            </Route>
+            <Route path='/history'>
+              <EventContainer />
+            </Route>
+            <Route path='/rockets'>
+              <RocketContainer />
+            </Route>
+            <Route path='/ships'>
+              <Ships />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+      <Footer />
     </div>
   );
 }

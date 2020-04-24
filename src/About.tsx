@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { fetchData } from './Utils/dataHelper';
+import { fetchData, moneyFormatter, numberFormatter } from './Utils/dataHelper';
 import ItemField from './Shared/ItemField/ItemField';
 import Loader from './Shared/Loader';
 
@@ -49,10 +49,13 @@ export default function About() {
             data={{ title: 'founded', value: info.founded }}
           ></ItemField>
           <ItemField
-            data={{ title: 'employees', value: info.employees }}
+            data={{
+              title: 'employees',
+              value: numberFormatter(info.employees),
+            }}
           ></ItemField>
           <ItemField
-            data={{ title: 'valuation', value: info.valuation }}
+            data={{ title: 'valuation', value: moneyFormatter(info.valuation) }}
           ></ItemField>
           <ItemField
             data={{
