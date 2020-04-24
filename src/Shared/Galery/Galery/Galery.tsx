@@ -1,7 +1,8 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import './Galery.css';
-import GaleryPreview from './GaleryPreview';
+import GaleryPreview from '../GaleryPreview';
+import GaleryFullscreenImage from '../GaleryFullscreenImage/GaleryFullscreenImage';
 
 interface GaleryModel {
   images: string[];
@@ -10,16 +11,11 @@ interface GaleryModel {
 export default function Galery(props: GaleryModel) {
   //TODO
   /*
-    Верстка (подсветка активной картинки, скролл, отсутпы, hover)
     Смена картинки по таймеру
-    Увеличение картинки
     Динамически считать высоту и ширину для картинки
   */
   const [active, setActive] = React.useState(0);
-
-  useEffect(() => {
-    setActive(0);
-  }, []);
+  const [fullscreen, setFullscreen] = React.useState(false);
 
   const back = useCallback(() => {
     const nextIndex = active - 1 >= 0 ? active - 1 : props.images.length - 1;
@@ -39,6 +35,14 @@ export default function Galery(props: GaleryModel) {
     [props.images]
   );
 
+  const closeFullscreen = useCallback(() => {
+    setFullscreen(false);
+  }, []);
+
+  const openFullscreen = () => {
+    setFullscreen(true);
+  };
+
   return (
     <div className={'galery'}>
       <div className={'galery-container'}>
@@ -49,6 +53,7 @@ export default function Galery(props: GaleryModel) {
           className={'galery-image-active'}
           src={props.images[active]}
           alt='{image}'
+          onClick={openFullscreen}
         ></img>
         <div className={'galery-button'} onClick={forward}>
           Next
@@ -66,6 +71,12 @@ export default function Galery(props: GaleryModel) {
           );
         })}
       </div>
+      {fullscreen ? (
+        <GaleryFullscreenImage
+          image={props.images[active]}
+          closeFullscreen={closeFullscreen}
+        />
+      ) : null}
     </div>
   );
 }

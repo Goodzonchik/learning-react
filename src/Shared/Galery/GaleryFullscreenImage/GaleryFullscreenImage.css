@@ -1,0 +1,18 @@
+.galery-fullscreen-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: #000000cc;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.galery-fullscreen-image {
+  max-width: 90%;
+  max-height: 90%;
+  cursor: zoom-out;
+}

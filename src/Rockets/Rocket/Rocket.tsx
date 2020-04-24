@@ -7,7 +7,7 @@ import {
 import { useParams } from 'react-router-dom';
 import ItemField from '../../Shared/ItemField/ItemField';
 import RocketSize from '../../Shared/RocketSize/RocketSize';
-import Galery from '../../Shared/Galery/Galery';
+import Galery from '../../Shared/Galery/Galery/Galery';
 import Loader from '../../Shared/Loader';
 import './Rocket.css';
 
