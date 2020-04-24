@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Galery/Galery.css';
+import './Galery/Galery.scss';
 
 interface GaleryModel {
   image: string;

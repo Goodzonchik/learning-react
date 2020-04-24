@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './Ships.css';
-
 interface ShipMissionsShort {
   missions: ShipMissionShort[];
   close: any;

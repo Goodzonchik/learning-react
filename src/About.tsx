@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { fetchData, moneyFormatter, numberFormatter } from './Utils/dataHelper';
+import { fetchData } from './Shared/Utils/dataHelpers';
 import ItemField from './Shared/ItemField/ItemField';
 import Loader from './Shared/Loader';
+import { money, pint } from './Shared/Utils/formatHelpers';
 
 const styles = {
   container: {
@@ -51,11 +52,11 @@ export default function About() {
           <ItemField
             data={{
               title: 'employees',
-              value: numberFormatter(info.employees),
+              value: pint(info.employees),
             }}
           ></ItemField>
           <ItemField
-            data={{ title: 'valuation', value: moneyFormatter(info.valuation) }}
+            data={{ title: 'valuation', value: money(info.valuation) }}
           ></ItemField>
           <ItemField
             data={{

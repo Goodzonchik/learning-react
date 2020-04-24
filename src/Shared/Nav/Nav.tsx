@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import './Nav.css';
+import './Nav.scss';
 
 export default function Nav() {
   const links = [
@@ -12,6 +12,7 @@ export default function Nav() {
     { url: 'history', title: 'Events' },
     { url: 'rockets', title: 'Rockets' },
     { url: 'ships', title: 'Ships' },
+    { url: 'feedback', title: 'Feedback' },
   ];
 
   const linkList = links.map((item) => (

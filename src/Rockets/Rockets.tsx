@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { fetchData } from '../Utils/dataHelper';
+import { fetchData } from '../Shared/Utils/dataHelpers';
 import { useRouteMatch, Link } from 'react-router-dom';
 import Loader from '../Shared/Loader';
 
@@ -24,5 +24,9 @@ export default function Rockets() {
     </Link>
   ));
 
-  return <div className={'list-container'}>{rocketList || <Loader />}</div>;
+  return (
+    <div className={'list-container'}>
+      {rockets.length ? rocketList : <Loader />}
+    </div>
+  );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './RocketSize.css';
+import './RocketSize.scss';
 
 interface RocketSizeField {
   diameter: string;

@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react';
-import {
-  fetchData,
-  moneyFormatter,
-  booleanFormatter,
-  numberFormatter,
-} from '../../Utils/dataHelper';
+import { fetchData } from '../../Shared/Utils/dataHelpers';
 import { useParams } from 'react-router-dom';
 import ItemField from '../../Shared/ItemField/ItemField';
 import RocketSize from '../../Shared/RocketSize/RocketSize';
 import Galery from '../../Shared/Galery/Galery/Galery';
 import Loader from '../../Shared/Loader';
-import './Rocket.css';
+import { pint, money, bool } from '../../Shared/Utils/formatHelpers';
+
+import './Rocket.scss';
 
 interface Rocket {
   rocket_name: string;
@@ -73,13 +70,13 @@ export default function Rocket() {
               <ItemField
                 data={{
                   title: 'cost per launch',
-                  value: `${moneyFormatter(rocket.cost_per_launch)}`,
+                  value: `${money(rocket.cost_per_launch)}`,
                 }}
               ></ItemField>
               <ItemField
                 data={{
                   title: 'active',
-                  value: booleanFormatter(rocket.active),
+                  value: bool(rocket.active),
                 }}
               ></ItemField>
               <ItemField
@@ -91,9 +88,7 @@ export default function Rocket() {
               <ItemField
                 data={{
                   title: 'mass',
-                  value: `${numberFormatter(
-                    rocket.mass.kg
-                  )}kg/${numberFormatter(rocket.mass.lb)}lb`,
+                  value: `${pint(rocket.mass.kg)}kg/${pint(rocket.mass.lb)}lb`,
                 }}
               ></ItemField>
               <ItemField

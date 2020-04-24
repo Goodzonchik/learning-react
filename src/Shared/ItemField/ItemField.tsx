@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ItemField.css';
+import './ItemField.scss';
 
 interface Field {
   data: {

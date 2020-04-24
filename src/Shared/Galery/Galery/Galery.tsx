@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
-
-import './Galery.css';
 import GaleryPreview from '../GaleryPreview';
 import GaleryFullscreenImage from '../GaleryFullscreenImage/GaleryFullscreenImage';
+
+import './Galery.scss';
 
 interface GaleryModel {
   images: string[];

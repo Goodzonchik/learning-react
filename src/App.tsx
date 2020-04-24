@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import About from './About';
 import RocketContainer from './Rockets/RocketContainer';
 import EventContainer from './Events/EventContainer';
-
-import './App.css';
 import Ships from './Ships/Ships';
 import Footer from './Shared/Footer/Footer';
+import FeedBack from './FeedBack/FeedBack';
+
+import './App.scss';
 
 export default function App() {
   return (
@@ -27,6 +28,9 @@ export default function App() {
             </Route>
             <Route path='/ships'>
               <Ships />
+            </Route>
+            <Route path='/feedback'>
+              <FeedBack />
             </Route>
           </Switch>
         </Router>
