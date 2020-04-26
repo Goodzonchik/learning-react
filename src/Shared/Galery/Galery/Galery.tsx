@@ -9,11 +9,6 @@ interface GaleryModel {
 }
 
 export default function Galery(props: GaleryModel) {
-  //TODO
-  /*
-    Смена картинки по таймеру
-    Динамически считать высоту и ширину для картинки
-  */
   const [active, setActive] = React.useState(0);
   const [fullscreen, setFullscreen] = React.useState(false);
 
@@ -28,7 +23,7 @@ export default function Galery(props: GaleryModel) {
   }, [active, props.images]);
 
   const setCurrent = useCallback(
-    (image) => {
+    (image: string) => {
       const index = props.images.findIndex((img) => img === image);
       setActive(index);
     },
@@ -60,7 +55,7 @@ export default function Galery(props: GaleryModel) {
         </div>
       </div>
       <div className={'galery-collection-container'}>
-        {props?.images?.map((image: string, index) => {
+        {props.images.map((image: string, index) => {
           return (
             <GaleryPreview
               image={image}

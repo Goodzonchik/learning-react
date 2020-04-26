@@ -46,7 +46,7 @@ export default function Ships() {
       <td>{ship.ship_name}</td>
       <td>{ship.ship_type}</td>
       <td>{bool(ship.active)}</td>
-      <td>{ship?.year_built || '-'}</td>
+      <td>{ship.year_built || '-'}</td>
       <td>{ship.home_port}</td>
       <td
         onClick={() => {
