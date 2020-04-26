@@ -4,7 +4,7 @@ import './GaleryFullscreenImage.scss';
 
 interface GaleryModel {
   image: string;
-  closeFullscreen: any;
+  closeFullscreen: () => void;
 }
 
 export default function GaleryFullscreenImage({

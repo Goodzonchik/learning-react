@@ -5,7 +5,7 @@ import './Galery/Galery.scss';
 interface GaleryModel {
   image: string;
   isActive: boolean;
-  setCurrent: any;
+  setCurrent: (image: string) => void;
 }
 
 export default function GaleryPreview({
