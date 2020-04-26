@@ -9,11 +9,11 @@ interface Field {
   };
 }
 
-export default function ItemField(props: Field) {
+export default function ItemField({ data }: Field) {
   return (
     <div className='item-container'>
-      <strong className='item-label'>{props.data.title}:</strong>
-      <span>{props.data.value}</span>
+      <strong className='item-label'>{data.title}:</strong>
+      <span>{data.value}</span>
     </div>
   );
 }

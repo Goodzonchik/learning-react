@@ -10,8 +10,11 @@ interface ShipMissionShort {
   flight: number;
 }
 
-export default function ShipMissionModal(props: ShipMissionsShort) {
-  const shipsList = props.missions.map((mission: ShipMissionShort) => (
+export default function ShipMissionModal({
+  missions,
+  close,
+}: ShipMissionsShort) {
+  const shipsList = missions.map((mission: ShipMissionShort) => (
     <tr key={mission.name}>
       <td>{mission.name}</td>
       <td>{mission.flight}</td>
@@ -25,7 +28,7 @@ export default function ShipMissionModal(props: ShipMissionsShort) {
           <h3>Mission</h3>
           <span
             onClick={() => {
-              props.close([]);
+              close([]);
             }}
           >
             &times;
@@ -43,7 +46,7 @@ export default function ShipMissionModal(props: ShipMissionsShort) {
             <tfoot>
               <tr>
                 <td colSpan={7}>
-                  <b>Total: {props.missions.length}</b>
+                  <b>Total: {missions.length}</b>
                 </td>
               </tr>
             </tfoot>

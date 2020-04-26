@@ -7,14 +7,13 @@ interface GaleryModel {
   closeFullscreen: any;
 }
 
-export default function GaleryFullscreenImage(props: GaleryModel) {
+export default function GaleryFullscreenImage({
+  image,
+  closeFullscreen,
+}: GaleryModel) {
   return (
-    <div className='galery-fullscreen-overlay' onClick={props.closeFullscreen}>
-      <img
-        className='galery-fullscreen-image'
-        src={props.image}
-        alt={props.image}
-      ></img>
+    <div className='galery-fullscreen-overlay' onClick={closeFullscreen}>
+      <img className='galery-fullscreen-image' src={image} alt={image}></img>
     </div>
   );
 }

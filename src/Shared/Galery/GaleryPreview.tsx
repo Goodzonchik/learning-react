@@ -8,19 +8,21 @@ interface GaleryModel {
   setCurrent: any;
 }
 
-export default function GaleryPreview(props: GaleryModel) {
+export default function GaleryPreview({
+  image,
+  isActive,
+  setCurrent,
+}: GaleryModel) {
   const setCurrentImage = () => {
-    props.setCurrent(props.image);
+    setCurrent(image);
   };
 
   return (
     <img
-      className={`galery-collection-image ${
-        props.isActive ? 'active-image' : ''
-      }`}
+      className={`galery-collection-image ${isActive ? 'active-image' : ''}`}
       onClick={setCurrentImage}
-      src={props.image}
-      alt={props.image}
+      src={image}
+      alt={image}
     ></img>
   );
 }

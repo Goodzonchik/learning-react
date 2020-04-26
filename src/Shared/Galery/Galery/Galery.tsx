@@ -8,26 +8,26 @@ interface GaleryModel {
   images: string[];
 }
 
-export default function Galery(props: GaleryModel) {
+export default function Galery({ images }: GaleryModel) {
   const [active, setActive] = React.useState(0);
   const [fullscreen, setFullscreen] = React.useState(false);
 
   const back = useCallback(() => {
-    const nextIndex = active - 1 >= 0 ? active - 1 : props.images.length - 1;
+    const nextIndex = active - 1 >= 0 ? active - 1 : images.length - 1;
     setActive(nextIndex);
-  }, [active, props.images]);
+  }, [active, images]);
 
   const forward = useCallback(() => {
-    const nextIndex = active + 1 <= props.images.length - 1 ? active + 1 : 0;
+    const nextIndex = active + 1 <= images.length - 1 ? active + 1 : 0;
     setActive(nextIndex);
-  }, [active, props.images]);
+  }, [active, images]);
 
   const setCurrent = useCallback(
     (image: string) => {
-      const index = props.images.findIndex((img) => img === image);
+      const index = images.findIndex((img) => img === image);
       setActive(index);
     },
-    [props.images]
+    [images]
   );
 
   const closeFullscreen = useCallback(() => {
@@ -46,7 +46,7 @@ export default function Galery(props: GaleryModel) {
         </div>
         <img
           className='galery-image-active'
-          src={props.images[active]}
+          src={images[active]}
           alt='{image}'
           onClick={openFullscreen}
         ></img>
@@ -55,7 +55,7 @@ export default function Galery(props: GaleryModel) {
         </div>
       </div>
       <div className='galery-collection-container'>
-        {props.images.map((image: string, index) => {
+        {images.map((image: string, index) => {
           return (
             <GaleryPreview
               image={image}
@@ -68,7 +68,7 @@ export default function Galery(props: GaleryModel) {
       </div>
       {fullscreen ? (
         <GaleryFullscreenImage
-          image={props.images[active]}
+          image={images[active]}
           closeFullscreen={closeFullscreen}
         />
       ) : null}
