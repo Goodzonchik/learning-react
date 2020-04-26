@@ -1,0 +1,58 @@
+.rocket-container {
+  margin: 25px 70px 50px;
+
+  width: 120px;
+  height: 400px;
+}
+
+.rocket {
+  position: relative;
+  display: flex;
+
+  width: 70px;
+  height: 350px;
+}
+
+.height {
+  position: absolute;
+  left: 12px;
+
+  display: flex;
+
+  height: 350px;
+  width: 100px;
+
+  border: 1px solid #638ede;
+  border-left: none;
+}
+
+.height-label {
+  top: calc(350px / 2);
+  right: -45px;
+  position: relative;
+
+  height: 1.6em;
+
+  background-color: #fff;
+}
+
+.diameter {
+  position: absolute;
+  bottom: -25px;
+
+  width: 28px;
+  height: 320px;
+
+  border: 1px solid #638ede;
+  border-top: none;
+}
+
+.diameter-label {
+  position: relative;
+  bottom: -325px;
+  right: 50px;
+
+  height: 1.6em;
+
+  background-color: #fff;
+}

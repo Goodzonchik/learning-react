@@ -1,0 +1,28 @@
+.table {
+  width: 100%;
+
+  border-spacing: 0;
+
+  .table-head {
+    font-size: 1.5em;
+    background-color: #eaeaea;
+
+    td {
+      padding: 0.25em;
+    }
+  }
+
+  .table-row {
+    background-color: #fbfbfb;
+
+    &:hover {
+      background-color: #e8e8e8;
+    }
+
+    td {
+      padding: 0.5em;
+
+      border-bottom: 1px solid #cecece;
+    }
+  }
+}
