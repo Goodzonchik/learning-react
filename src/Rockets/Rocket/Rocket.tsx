@@ -34,6 +34,9 @@ interface Rocket {
   };
 }
 
+const sizeFormat = (size: { meters: number; feet: number }): string =>
+  `${size.meters}meters/${size.feet}feet`;
+
 export default function Rocket() {
   const { rocketId } = useParams();
   const [rocket, setRocket] = React.useState<Rocket>();
@@ -48,19 +51,19 @@ export default function Rocket() {
     <div>
       {rocket ? (
         <div>
-          <div className={'page-header'}>
+          <div className='page-header'>
             <h2>{rocket.rocket_name}</h2>
             <div>{rocket.description}</div>
           </div>
-          <div className={'rocket-fields-container'}>
+          <div className='rocket-fields-container'>
             <div>
               <RocketSize
-                diameter={`${rocket.diameter.meters}meters/${rocket.diameter.feet}feet`}
-                height={`${rocket.height.meters}meters/${rocket.height.feet}feet`}
+                diameter={sizeFormat(rocket.diameter)}
+                height={sizeFormat(rocket.height)}
               ></RocketSize>
             </div>
 
-            <div className={'rocket-fields'}>
+            <div className='rocket-fields'>
               <ItemField
                 data={{ title: 'company', value: rocket.company }}
               ></ItemField>

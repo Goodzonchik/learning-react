@@ -42,7 +42,7 @@ export default function Ships() {
   }
 
   const shipsList = ships.map((ship: ShipShort) => (
-    <tr key={ship.ship_id} className={'table-row'}>
+    <tr key={ship.ship_id} className='table-row'>
       <td>{ship.ship_name}</td>
       <td>{ship.ship_type}</td>
       <td>{bool(ship.active)}</td>
@@ -59,10 +59,10 @@ export default function Ships() {
   ));
 
   return (
-    <div className={'list-container'}>
+    <div className='list-container'>
       {ships.length ? (
-        <table className={'table'}>
-          <thead className={'table-head'}>
+        <table className='table'>
+          <thead className='table-head'>
             <tr>
               <td>Name</td>
               <td>Type</td>

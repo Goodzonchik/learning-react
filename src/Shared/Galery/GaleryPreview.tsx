@@ -20,7 +20,7 @@ export default function GaleryPreview(props: GaleryModel) {
       }`}
       onClick={setCurrentImage}
       src={props.image}
-      alt='{image}'
+      alt={props.image}
     ></img>
   );
 }

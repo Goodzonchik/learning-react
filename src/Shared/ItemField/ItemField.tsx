@@ -11,8 +11,8 @@ interface Field {
 
 export default function ItemField(props: Field) {
   return (
-    <div className={'item-container'}>
-      <strong className={'item-label'}>{props.data.title}:</strong>
+    <div className='item-container'>
+      <strong className='item-label'>{props.data.title}:</strong>
       <span>{props.data.value}</span>
     </div>
   );

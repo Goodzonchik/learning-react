@@ -12,8 +12,8 @@ import './App.scss';
 
 export default function App() {
   return (
-    <div className={'app'}>
-      <div className={'content'}>
+    <div className='app'>
+      <div className='content'>
         <Router>
           <Nav />
           <Switch>

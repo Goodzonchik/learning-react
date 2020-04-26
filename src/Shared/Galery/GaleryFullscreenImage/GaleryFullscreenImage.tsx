@@ -11,7 +11,7 @@ export default function GaleryFullscreenImage(props: GaleryModel) {
   return (
     <div className='galery-fullscreen-overlay' onClick={props.closeFullscreen}>
       <img
-        className={'galery-fullscreen-image'}
+        className='galery-fullscreen-image'
         src={props.image}
         alt={props.image}
       ></img>

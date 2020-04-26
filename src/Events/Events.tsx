@@ -20,12 +20,12 @@ export default function Events() {
 
   const eventList = events.map((event) => (
     <Link to={`${match.path}/${event.id}`} key={event.id}>
-      <div className={'list-container-item'}>{event.title}</div>
+      <div className='list-container-item'>{event.title}</div>
     </Link>
   ));
 
   return (
-    <div className={'list-container'}>
+    <div className='list-container'>
       {events.length ? eventList : <Loader />}
     </div>
   );

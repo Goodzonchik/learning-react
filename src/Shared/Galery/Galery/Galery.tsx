@@ -39,22 +39,22 @@ export default function Galery(props: GaleryModel) {
   };
 
   return (
-    <div className={'galery'}>
-      <div className={'galery-container'}>
-        <div className={'galery-button'} onClick={back}>
+    <div className='galery'>
+      <div className='galery-container'>
+        <div className='galery-button' onClick={back}>
           Prev
         </div>
         <img
-          className={'galery-image-active'}
+          className='galery-image-active'
           src={props.images[active]}
           alt='{image}'
           onClick={openFullscreen}
         ></img>
-        <div className={'galery-button'} onClick={forward}>
+        <div className='galery-button' onClick={forward}>
           Next
         </div>
       </div>
-      <div className={'galery-collection-container'}>
+      <div className='galery-collection-container'>
         {props.images.map((image: string, index) => {
           return (
             <GaleryPreview

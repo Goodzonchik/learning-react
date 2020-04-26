@@ -20,12 +20,12 @@ export default function Rockets() {
 
   const rocketList = rockets.map((rocket: RocketShort) => (
     <Link to={`${match.path}/${rocket.rocket_id}`} key={rocket.rocket_id}>
-      <div className={'list-container-item'}> {rocket.rocket_name}</div>
+      <div className='list-container-item'> {rocket.rocket_name}</div>
     </Link>
   ));
 
   return (
-    <div className={'list-container'}>
+    <div className='list-container'>
       {rockets.length ? rocketList : <Loader />}
     </div>
   );

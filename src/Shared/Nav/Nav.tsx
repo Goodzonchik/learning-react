@@ -5,10 +5,7 @@ import './Nav.scss';
 
 export default function Nav() {
   const links = [
-    {
-      url: 'about',
-      title: 'About company',
-    },
+    { url: 'about', title: 'About company' },
     { url: 'history', title: 'Events' },
     { url: 'rockets', title: 'Rockets' },
     { url: 'ships', title: 'Ships' },
@@ -16,12 +13,12 @@ export default function Nav() {
   ];
 
   const linkList = links.map((item) => (
-    <li className={'nav-link'} key={item.url}>
-      <NavLink to={'/' + item.url} activeClassName='active-link'>
+    <li className='nav-link' key={item.url}>
+      <NavLink to={`/${item.url}`} activeClassName='active-link'>
         {item.title}
       </NavLink>
     </li>
   ));
 
-  return <ul className={'nav'}>{linkList}</ul>;
+  return <ul className='nav'>{linkList}</ul>;
 }

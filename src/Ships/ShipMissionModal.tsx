@@ -19,9 +19,9 @@ export default function ShipMissionModal(props: ShipMissionsShort) {
   ));
 
   return (
-    <div className={'overlay'}>
-      <div className={'modal'}>
-        <div className={'modal-head'}>
+    <div className='overlay'>
+      <div className='modal'>
+        <div className='modal-head'>
           <h3>Mission</h3>
           <span
             onClick={() => {
@@ -31,9 +31,9 @@ export default function ShipMissionModal(props: ShipMissionsShort) {
             &times;
           </span>
         </div>
-        <div className={'modal-body'}>
-          <table className={'table'}>
-            <thead className={'table-head'}>
+        <div className='modal-body'>
+          <table className='table'>
+            <thead className='table-head'>
               <tr>
                 <td>Name</td>
                 <td>Flight number</td>
