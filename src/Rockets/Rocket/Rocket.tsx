@@ -48,9 +48,9 @@ export default function Rocket() {
   }, [rocketId]);
 
   return (
-    <div>
+    <>
       {rocket ? (
-        <div>
+        <>
           <div className='page-header'>
             <h2>{rocket.rocket_name}</h2>
             <div>{rocket.description}</div>
@@ -103,10 +103,10 @@ export default function Rocket() {
           <div>
             <Galery images={rocket.flickr_images}></Galery>
           </div>
-        </div>
+        </>
       ) : (
         <Loader />
       )}
-    </div>
+    </>
   );
 }

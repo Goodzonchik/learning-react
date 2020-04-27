@@ -40,7 +40,7 @@ export default function About() {
   return (
     <div style={styles.container}>
       {info ? (
-        <div>
+        <>
           <h2>{info.name}</h2>
           <div>{info.summary}</div>
           <ItemField
@@ -64,7 +64,7 @@ export default function About() {
               value: `${info.headquarters.state}, ${info.headquarters.city}, ${info.headquarters.address}`,
             }}
           ></ItemField>
-        </div>
+        </>
       ) : (
         <Loader />
       )}

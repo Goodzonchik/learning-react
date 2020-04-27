@@ -22,9 +22,9 @@ export default function Event() {
   }, [eventId]);
 
   return (
-    <div>
+    <>
       {event ? (
-        <div>
+        <>
           <h2>{event.title}</h2>
           <div>{event.details}</div>
           <ItemField
@@ -33,10 +33,10 @@ export default function Event() {
           <ItemField
             data={{ title: 'flight number', value: event.flight_number }}
           ></ItemField>
-        </div>
+        </>
       ) : (
         <Loader />
       )}
-    </div>
+    </>
   );
 }
