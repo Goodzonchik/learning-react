@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+
 import Nav from './Shared/Nav/Nav';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import About from './About';
-import RocketContainer from './Rockets/RocketContainer';
-import EventContainer from './Events/EventContainer';
-import Ships from './Ships/Ships';
 import Footer from './Shared/Footer/Footer';
 import FeedBack from './FeedBack/FeedBack';
+import Loader from './Shared/Loader';
 
 import './App.scss';
+
+const RocketContainer = React.lazy(() => import('./Rockets/RocketContainer'));
+const EventContainer = React.lazy(() => import('./Events/EventContainer'));
+const Ships = React.lazy(() => import('./Ships/Ships'));
 
 export default function App() {
   return (
@@ -17,17 +25,24 @@ export default function App() {
         <Router>
           <Nav />
           <Switch>
+            <Redirect exact from='/' to='/about' />
             <Route path='/about'>
               <About />
             </Route>
             <Route path='/history'>
-              <EventContainer />
+              <Suspense fallback={<Loader />}>
+                <EventContainer />
+              </Suspense>
             </Route>
             <Route path='/rockets'>
-              <RocketContainer />
+              <Suspense fallback={<Loader />}>
+                <RocketContainer />
+              </Suspense>
             </Route>
             <Route path='/ships'>
-              <Ships />
+              <Suspense fallback={<Loader />}>
+                <Ships />
+              </Suspense>
             </Route>
             <Route path='/feedback'>
               <FeedBack />
