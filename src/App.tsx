@@ -13,6 +13,7 @@ import Loader from './Shared/Loader';
 import FeedBackContainer from './FeedBack/FeedBackContainer';
 
 import './App.scss';
+import NotFound from './NotFound';
 
 const RocketContainer = React.lazy(() => import('./Rockets/RocketContainer'));
 const EventContainer = React.lazy(() => import('./Events/EventContainer'));
@@ -46,6 +47,9 @@ export default function App() {
             </Route>
             <Route path='/feedback'>
               <FeedBackContainer />
+            </Route>
+            <Route path='*'>
+              <NotFound />
             </Route>
           </Switch>
         </Router>
