@@ -9,8 +9,8 @@ import {
 import Nav from './Shared/Nav/Nav';
 import About from './About';
 import Footer from './Shared/Footer/Footer';
-import FeedBack from './FeedBack/FeedBack';
 import Loader from './Shared/Loader';
+import FeedBackContainer from './FeedBack/FeedBackContainer';
 
 import './App.scss';
 
@@ -45,7 +45,7 @@ export default function App() {
               </Suspense>
             </Route>
             <Route path='/feedback'>
-              <FeedBack />
+              <FeedBackContainer />
             </Route>
           </Switch>
         </Router>
