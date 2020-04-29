@@ -2,6 +2,7 @@ import React from 'react';
 
 import './FeedBack.scss';
 import FieldError from './FieldError';
+import { FormState } from './FeedBackContainer';
 
 const styles = {
   container: {
@@ -19,7 +20,19 @@ const subjects = [
   { value: 2, title: 'Error on site' },
 ];
 
-export default function FeedBack({ form, change, submit, clear }: any) {
+interface FeedBackModel {
+  form: FormState;
+  change: (state: FormState) => void;
+  submit: () => void;
+  clear: () => void;
+}
+
+export default function FeedBack({
+  form,
+  change,
+  submit,
+  clear,
+}: FeedBackModel) {
   /*
     TODO:
     Верстка
@@ -101,15 +114,6 @@ export default function FeedBack({ form, change, submit, clear }: any) {
           {form.status.messageRequired && form.status.submited ? (
             <FieldError error={isEmpty} />
           ) : null}
-        </div>
-        <div className='input-wrapper'>
-          <input
-            type='checkbox'
-            name='subscribe'
-            value={form.form.subscribe}
-            onChange={handleChange}
-          />
-          <label>Subscribe by mail sending</label>
         </div>
         <div className='button-row'>
           <button

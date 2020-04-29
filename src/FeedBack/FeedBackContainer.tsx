@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 
 import './FeedBack.scss';
 import FeedBack from './FeedBack';
+import { Prompt } from 'react-router-dom';
 
 const styles = {
   container: {
@@ -18,7 +19,7 @@ const defaultForm = {
     email: '',
     phone: '',
     message: '',
-    subject: '',
+    subject: 1,
     subscribe: false,
   },
   status: {
@@ -31,11 +32,13 @@ const defaultForm = {
   },
 };
 
+export type FormState = typeof defaultForm;
+
 export default function FeedBackContainer() {
-  const [form, setForm] = React.useState<any>(defaultForm);
+  const [form, setForm] = React.useState<FormState>(defaultForm);
 
   const changeForm = useCallback(
-    (value: any) => {
+    (value: FormState) => {
       const newForm = {
         form: value.form,
         status: {
@@ -62,6 +65,9 @@ export default function FeedBackContainer() {
         ...form.status,
         submited: true,
         valid: !!form.form.name && !!form.form.email && !!form.form.message,
+        nameRequired: !form.form.name,
+        emailRequired: !form.form.email,
+        messageRequired: !form.form.message,
       },
     };
     newForm.status.submited = true;
@@ -77,6 +83,14 @@ export default function FeedBackContainer() {
     }
   }, [form, clearForm]);
 
+  const hasChanges = Boolean(
+    form.form.name ||
+      form.form.email ||
+      form.form.phone ||
+      form.form.message ||
+      form.form.subject !== 1
+  );
+
   return (
     <div style={styles.container}>
       <FeedBack
@@ -85,6 +99,12 @@ export default function FeedBackContainer() {
         clear={clearForm}
         submit={submitForm}
       ></FeedBack>
+      <Prompt
+        when={hasChanges}
+        message={
+          'You have unsent data; upon transition, they will be sent to a black hole. Are you sure you want to switch?'
+        }
+      />
     </div>
   );
 }
