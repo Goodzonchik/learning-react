@@ -21,13 +21,17 @@ const EventContainer = React.lazy(() => import('./Events/EventContainer'));
 const Ships = React.lazy(() => import('./Ships/Ships'));
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const initDarkModeValue =
+    localStorage.getItem('darkMode') === 'true' ? true : false;
+  const [darkMode, setDarkMode] = useState(initDarkModeValue);
 
   function setModeDark() {
+    localStorage.setItem('darkMode', 'true');
     setDarkMode(true);
   }
 
   function setModeLight() {
+    localStorage.setItem('darkMode', 'false');
     setDarkMode(false);
   }
 

@@ -108,4 +108,14 @@ body {
     background-color: #313131;
     box-shadow: 0 0 10px 10px #464646;
   }
+
+  .list-container-item {
+    background-color: #272727;
+    color: #c3c3c3;
+
+    &:hover {
+      background-color: #e6e6e6;
+      color: #565656;
+    }
+  }
 }
