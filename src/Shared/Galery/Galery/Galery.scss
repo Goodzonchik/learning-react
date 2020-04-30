@@ -66,3 +66,26 @@
   opacity: 1;
   box-shadow: 0px 0px 3px 3px #a5a5a5;
 }
+
+.dark {
+  .galery {
+    background-color: #444444;
+  }
+
+  .galery-collection-container {
+    background-color: #272727;
+  }
+
+  .galery-collection-image {
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+      box-shadow: 0px 0px 3px 3px #e4e4e4;
+    }
+  }
+
+  .galery-button:hover {
+    background-color: #636363;
+  }
+}

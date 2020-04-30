@@ -26,3 +26,20 @@
     }
   }
 }
+
+.dark {
+  .table {
+    .table-head {
+      background-color: #5d5d5d;
+      color: #d8d8d8;
+    }
+
+    .table-row {
+      background-color: #424242;
+
+      &:hover {
+        background-color: #848484;
+      }
+    }
+  }
+}

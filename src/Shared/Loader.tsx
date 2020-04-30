@@ -5,10 +5,9 @@ export default function Loader() {
     <svg
       style={{
         margin: 'auto',
-        background: '#fff',
         display: 'block',
-        width: '200px',
-        height: '200px',
+        width: '100px',
+        height: '100px',
       }}
     >
       <circle

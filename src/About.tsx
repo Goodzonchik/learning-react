@@ -6,7 +6,6 @@ import { money, pint } from './Shared/Utils/formatHelpers';
 
 const styles = {
   container: {
-    display: 'block',
     padding: '1em',
     margin: '1em',
     width: '100%',

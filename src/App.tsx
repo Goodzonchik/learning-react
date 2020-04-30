@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,17 +14,39 @@ import FeedBackContainer from './FeedBack/FeedBackContainer';
 
 import './App.scss';
 import NotFound from './NotFound';
+import NextVersion from './NextVersion';
 
 const RocketContainer = React.lazy(() => import('./Rockets/RocketContainer'));
 const EventContainer = React.lazy(() => import('./Events/EventContainer'));
 const Ships = React.lazy(() => import('./Ships/Ships'));
 
 export default function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  function setModeDark() {
+    setDarkMode(true);
+  }
+
+  function setModeLight() {
+    setDarkMode(false);
+  }
+
   return (
-    <div className='app'>
+    <div className={darkMode ? 'app dark' : 'app'}>
       <div className='content'>
         <Router>
-          <Nav />
+          <div className={'header'}>
+            <Nav />
+            {darkMode ? (
+              <button className='form-button' onClick={setModeLight}>
+                Light
+              </button>
+            ) : (
+              <button className='form-button' onClick={setModeDark}>
+                Dark
+              </button>
+            )}
+          </div>
           <Switch>
             <Redirect exact from='/' to='/about' />
             <Route path='/about'>
@@ -47,6 +69,9 @@ export default function App() {
             </Route>
             <Route path='/feedback'>
               <FeedBackContainer />
+            </Route>
+            <Route path='/next'>
+              <NextVersion />
             </Route>
             <Route path='*'>
               <NotFound />
