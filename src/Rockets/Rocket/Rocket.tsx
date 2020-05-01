@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchData } from '../../Shared/Utils/dataHelpers';
 import { useParams } from 'react-router-dom';
 import ItemField from '../../Shared/ItemField/ItemField';
@@ -39,7 +39,7 @@ const sizeFormat = (size: { meters: number; feet: number }): string =>
 
 export default function Rocket() {
   const { rocketId } = useParams();
-  const [rocket, setRocket] = React.useState<Rocket>();
+  const [rocket, setRocket] = useState<Rocket>();
 
   useEffect(() => {
     fetchData(`rockets/${rocketId}`).then((data: Rocket) => {

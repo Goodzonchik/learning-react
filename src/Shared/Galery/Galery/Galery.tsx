@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import GaleryPreview from '../GaleryPreview';
 import GaleryFullscreenImage from '../GaleryFullscreenImage/GaleryFullscreenImage';
 
@@ -9,8 +9,8 @@ interface GaleryModel {
 }
 
 export default function Galery({ images }: GaleryModel) {
-  const [active, setActive] = React.useState(0);
-  const [fullscreen, setFullscreen] = React.useState(false);
+  const [active, setActive] = useState(0);
+  const [fullscreen, setFullscreen] = useState(false);
 
   const back = useCallback(() => {
     const nextIndex = active - 1 >= 0 ? active - 1 : images.length - 1;

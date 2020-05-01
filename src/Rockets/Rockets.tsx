@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchData } from '../Shared/Utils/dataHelpers';
 import { useRouteMatch, Link } from 'react-router-dom';
 import Loader from '../Shared/Loader';
@@ -10,7 +10,7 @@ interface RocketShort {
 
 export default function Rockets() {
   const match = useRouteMatch();
-  const [rockets, setRockets] = React.useState<RocketShort[]>([]);
+  const [rockets, setRockets] = useState<RocketShort[]>([]);
 
   useEffect(() => {
     fetchData('rockets').then((data: RocketShort[]) => {

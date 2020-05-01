@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchData } from './Shared/Utils/dataHelpers';
 import ItemField from './Shared/ItemField/ItemField';
 import Loader from './Shared/Loader';
@@ -28,7 +28,7 @@ interface AboutCompany {
 }
 
 export default function About() {
-  const [info, setInfo] = React.useState<AboutCompany>();
+  const [info, setInfo] = useState<AboutCompany>();
 
   useEffect(() => {
     fetchData('info').then((data: AboutCompany) => {

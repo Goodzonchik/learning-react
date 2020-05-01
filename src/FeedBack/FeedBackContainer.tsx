@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import './FeedBack.scss';
 import FeedBack from './FeedBack';
@@ -35,7 +35,7 @@ const defaultForm = {
 export type FormState = typeof defaultForm;
 
 export default function FeedBackContainer() {
-  const [form, setForm] = React.useState<FormState>(defaultForm);
+  const [form, setForm] = useState<FormState>(defaultForm);
 
   const changeForm = useCallback(
     (value: FormState) => {

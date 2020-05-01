@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchData } from '../Shared/Utils/dataHelpers';
 import Loader from '../Shared/Loader';
 
@@ -22,14 +22,8 @@ interface ShipMissionShort {
 }
 
 export default function Ships() {
-  /*
-    TODO
-    Фильтр по полям полей
-    Сортировка
-  */
-
-  const [ships, setShips] = React.useState<ShipShort[]>([]);
-  const [missions, setMissions] = React.useState<ShipMissionShort[]>([]);
+  const [ships, setShips] = useState<ShipShort[]>([]);
+  const [missions, setMissions] = useState<ShipMissionShort[]>([]);
 
   useEffect(() => {
     fetchData('ships').then((data: ShipShort[]) => {
