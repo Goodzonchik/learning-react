@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from 'react';
+
 import { fetchData } from './Shared/Utils/dataHelpers';
 import ItemField from './Shared/ItemField/ItemField';
 import Loader from './Shared/Loader';
 import { money, pint } from './Shared/Utils/formatHelpers';
-
-const styles = {
-  container: {
-    padding: '1em',
-    margin: '1em',
-    width: '100%',
-    height: '100%',
-  },
-};
 
 interface AboutCompany {
   name: string;
@@ -37,7 +29,7 @@ export default function About() {
   }, []);
 
   return (
-    <div style={styles.container}>
+    <div className={'container'}>
       {info ? (
         <>
           <h2>{info.name}</h2>

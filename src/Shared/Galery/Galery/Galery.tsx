@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+
 import GaleryPreview from '../GaleryPreview';
 import GaleryFullscreenImage from '../GaleryFullscreenImage/GaleryFullscreenImage';
 
@@ -11,32 +12,30 @@ interface GaleryModel {
 export default function Galery({ images }: GaleryModel) {
   const [active, setActive] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
+  const lastImage = images.length - 1;
 
   const back = useCallback(() => {
-    const nextIndex = active - 1 >= 0 ? active - 1 : images.length - 1;
-    setActive(nextIndex);
-  }, [active, images]);
+    const next = active - 1;
+    setActive(next >= 0 ? next : lastImage);
+  }, [active, lastImage]);
 
   const forward = useCallback(() => {
-    const nextIndex = active + 1 <= images.length - 1 ? active + 1 : 0;
-    setActive(nextIndex);
-  }, [active, images]);
+    const next = active + 1;
+    setActive(next <= lastImage ? next : 0);
+  }, [active, lastImage]);
 
   const setCurrent = useCallback(
     (image: string) => {
-      const index = images.findIndex((img) => img === image);
-      setActive(index);
+      setActive(images.indexOf(image));
     },
     [images]
   );
 
-  const closeFullscreen = useCallback(() => {
-    setFullscreen(false);
-  }, []);
-
-  const openFullscreen = () => {
-    setFullscreen(true);
+  const toggleFullscreen = () => {
+    setFullscreen(!fullscreen);
   };
+
+  const closeFullscreen = useCallback(toggleFullscreen, [fullscreen]);
 
   return (
     <div className='galery'>
@@ -48,7 +47,7 @@ export default function Galery({ images }: GaleryModel) {
           className='galery-image-active'
           src={images[active]}
           alt='{image}'
-          onClick={openFullscreen}
+          onClick={toggleFullscreen}
         ></img>
         <div className='galery-button' onClick={forward}>
           Next

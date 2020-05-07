@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+
 import { fetchData } from '../Shared/Utils/dataHelpers';
-import Loader from '../Shared/Loader';
-import ShipMissionModal from './ShipMissionModal';
 import { bool } from '../Shared/Utils/formatHelpers';
 
+import Loader from '../Shared/Loader';
+import ShipMissionModal from './ShipMissionModal';
+
 import './Ships.scss';
+import ShowIcon from '../Shared/ShowIcon';
 
 interface ShipShort {
   ship_id: string;
@@ -31,8 +34,8 @@ export default function Ships() {
     });
   }, []);
 
-  function showMissionModal(missions: ShipMissionShort[]) {
-    setMissions(missions);
+  function toggleMissionModal(missions?: ShipMissionShort[]) {
+    setMissions(missions || []);
   }
 
   const shipsList = ships.map((ship: ShipShort) => (
@@ -42,12 +45,10 @@ export default function Ships() {
       <td>{bool(ship.active)}</td>
       <td>{ship.year_built || '-'}</td>
       <td>{ship.home_port}</td>
-      <td
-        onClick={() => {
-          showMissionModal(ship.missions);
-        }}
-      >
-        {ship.missions.length}
+      <td>
+        {ship.missions.length > 0 && (
+          <ShowIcon action={toggleMissionModal} args={ship.missions} />
+        )}
       </td>
     </tr>
   ));
@@ -81,7 +82,7 @@ export default function Ships() {
         <Loader />
       )}
       {missions.length ? (
-        <ShipMissionModal missions={missions} close={showMissionModal} />
+        <ShipMissionModal missions={missions} close={toggleMissionModal} />
       ) : null}
     </div>
   );

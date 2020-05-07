@@ -2,7 +2,7 @@ import React from 'react';
 
 interface ShipMissionsShort {
   missions: ShipMissionShort[];
-  close: (missions: ShipMissionShort[]) => void;
+  close: () => void;
 }
 
 interface ShipMissionShort {
@@ -26,13 +26,9 @@ export default function ShipMissionModal({
       <div className='modal'>
         <div className='modal-head'>
           <h3>Mission</h3>
-          <span
-            onClick={() => {
-              close([]);
-            }}
-          >
+          <h3 onClick={close} className='close'>
             &times;
-          </span>
+          </h3>
         </div>
         <div className='modal-body'>
           <table className='table'>

@@ -18,7 +18,6 @@ export default function Loader() {
         strokeWidth='10'
         r='35'
         strokeDasharray='165 55'
-        transform='rotate(119.633 50 50)'
       >
         <animateTransform
           attributeName='transform'
@@ -26,7 +25,6 @@ export default function Loader() {
           repeatCount='indefinite'
           dur='1s'
           values='0 50 50;360 50 50'
-          keyTimes='0;1'
         ></animateTransform>
       </circle>
     </svg>

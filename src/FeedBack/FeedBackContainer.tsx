@@ -4,15 +4,6 @@ import './FeedBack.scss';
 import FeedBack from './FeedBack';
 import { Prompt } from 'react-router-dom';
 
-const styles = {
-  container: {
-    display: 'block',
-    padding: '1em',
-    width: '100%',
-    height: '100%',
-  },
-};
-
 const defaultForm = {
   form: {
     name: '',
@@ -92,7 +83,7 @@ export default function FeedBackContainer() {
   );
 
   return (
-    <div style={styles.container}>
+    <div className={'container'}>
       <FeedBack
         form={form}
         change={changeForm}

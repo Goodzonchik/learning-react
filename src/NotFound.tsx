@@ -2,11 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const styles = {
-  container: {
-    display: 'block',
-    padding: '1em',
-    margin: '1em',
-  },
   image: {
     width: '100%',
   },
@@ -22,8 +17,8 @@ const styles = {
 
 export default function NotFound() {
   return (
-    <div style={styles.container}>
-      <h2>- Houston, we have a problem!</h2>
+    <div className={'container'}>
+      ><h2>- Houston, we have a problem!</h2>
       <h2>- What happened?</h2>
       <h2>- We did not find the page.</h2>
       <h2>- Try to go to the main page at the link below...</h2>

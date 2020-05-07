@@ -2,7 +2,7 @@ import React from 'react';
 
 import './GaleryFullscreenImage.scss';
 
-interface GaleryModel {
+interface GaleryFullscreenModel {
   image: string;
   closeFullscreen: () => void;
 }
@@ -10,7 +10,7 @@ interface GaleryModel {
 export default function GaleryFullscreenImage({
   image,
   closeFullscreen,
-}: GaleryModel) {
+}: GaleryFullscreenModel) {
   return (
     <div className='galery-fullscreen-overlay' onClick={closeFullscreen}>
       <img className='galery-fullscreen-image' src={image} alt={image}></img>

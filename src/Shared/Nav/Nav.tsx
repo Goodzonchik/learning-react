@@ -5,18 +5,18 @@ import './Nav.scss';
 
 export default function Nav() {
   const links = [
-    { url: 'about', title: 'About company' },
-    { url: 'history', title: 'Events' },
-    { url: 'rockets', title: 'Rockets' },
-    { url: 'ships', title: 'Ships' },
-    { url: 'payloads', title: 'Payloads' },
-    { url: 'feedback', title: 'Feedback' },
+    'about',
+    'history',
+    'rockets',
+    'ships',
+    'payloads',
+    'feedback',
   ];
 
   const linkList = links.map((item) => (
-    <li className='nav-link' key={item.url}>
-      <NavLink to={`/${item.url}`} activeClassName='active-link'>
-        {item.title}
+    <li className='nav-link' key={item}>
+      <NavLink to={`/${item}`} activeClassName='active-link'>
+        <span style={{ textTransform: 'capitalize' }}>{item}</span>
       </NavLink>
     </li>
   ));

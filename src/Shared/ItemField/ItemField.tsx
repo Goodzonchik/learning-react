@@ -5,7 +5,7 @@ import './ItemField.scss';
 interface Field {
   data: {
     title: string;
-    value: string | number | undefined;
+    value?: string | number;
   };
 }
 

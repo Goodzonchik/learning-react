@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { fetchData } from '../../Shared/Utils/dataHelpers';
 import { useParams } from 'react-router-dom';
+
+import { fetchData } from '../../Shared/Utils/dataHelpers';
 import ItemField from '../../Shared/ItemField/ItemField';
 import RocketSize from '../../Shared/RocketSize/RocketSize';
 import Galery from '../../Shared/Galery/Galery/Galery';
 import Loader from '../../Shared/Loader';
-import { pint, money, bool } from '../../Shared/Utils/formatHelpers';
+import { pint, money, bool, size } from '../../Shared/Utils/formatHelpers';
 
 import './Rocket.scss';
 
@@ -34,9 +35,6 @@ interface Rocket {
   };
 }
 
-const sizeFormat = (size: { meters: number; feet: number }): string =>
-  `${size.meters}meters/${size.feet}feet`;
-
 export default function Rocket() {
   const { rocketId } = useParams();
   const [rocket, setRocket] = useState<Rocket>();
@@ -56,12 +54,10 @@ export default function Rocket() {
             <div>{rocket.description}</div>
           </div>
           <div className='rocket-fields-container'>
-            <div>
-              <RocketSize
-                diameter={sizeFormat(rocket.diameter)}
-                height={sizeFormat(rocket.height)}
-              ></RocketSize>
-            </div>
+            <RocketSize
+              diameter={size(rocket.diameter)}
+              height={size(rocket.height)}
+            ></RocketSize>
 
             <div className='rocket-fields'>
               <ItemField
@@ -100,9 +96,7 @@ export default function Rocket() {
             </div>
           </div>
 
-          <div>
-            <Galery images={rocket.flickr_images}></Galery>
-          </div>
+          <Galery images={rocket.flickr_images}></Galery>
         </>
       ) : (
         <Loader />

@@ -4,14 +4,6 @@ import './FeedBack.scss';
 import FieldError, { ErrorTypes } from '../Shared/FieldError/FieldError';
 import { FormState } from './FeedBackContainer';
 
-const styles = {
-  container: {
-    padding: '1em',
-    width: '100%',
-    height: '100%',
-  },
-};
-
 const subjects = [
   { value: 1, title: 'Sentence' },
   { value: 2, title: 'Error on site' },
@@ -39,7 +31,7 @@ export default function FeedBack({
   }
 
   return (
-    <div style={styles.container}>
+    <div className={'container'}>
       <h2>Feed back</h2>
       <form
         onSubmit={(e) => {
