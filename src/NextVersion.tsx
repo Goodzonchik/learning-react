@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function NextVersion() {
   const ideas = [
+    'Proxy component (button)',
     'Preloading',
     'Add css variables',
     'Table with paging',

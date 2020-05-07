@@ -14,6 +14,4 @@ export const pint = (value: number = 0): string => {
   return formatter.format(value);
 };
 
-export const bool = (value: boolean): string => {
-  return value.toString();
-};
+export const bool = (value: boolean): string => value.toString();

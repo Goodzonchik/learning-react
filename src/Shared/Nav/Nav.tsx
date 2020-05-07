@@ -9,6 +9,7 @@ export default function Nav() {
     { url: 'history', title: 'Events' },
     { url: 'rockets', title: 'Rockets' },
     { url: 'ships', title: 'Ships' },
+    { url: 'payloads', title: 'Payloads' },
     { url: 'feedback', title: 'Feedback' },
   ];
 

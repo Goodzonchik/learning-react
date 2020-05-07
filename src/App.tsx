@@ -15,6 +15,7 @@ import FeedBackContainer from './FeedBack/FeedBackContainer';
 import './App.scss';
 import NotFound from './NotFound';
 import NextVersion from './NextVersion';
+import Payloads from './Payloads/Payloads';
 
 const RocketContainer = React.lazy(() => import('./Rockets/RocketContainer'));
 const EventContainer = React.lazy(() => import('./Events/EventContainer'));
@@ -69,6 +70,11 @@ export default function App() {
             <Route path='/ships'>
               <Suspense fallback={<Loader />}>
                 <Ships />
+              </Suspense>
+            </Route>
+            <Route path='/payloads'>
+              <Suspense fallback={<Loader />}>
+                <Payloads />
               </Suspense>
             </Route>
             <Route path='/feedback'>
