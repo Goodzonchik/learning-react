@@ -23,13 +23,11 @@ interface ShipMissionShort {
 
 export default function Ships() {
   const [ships, setShips] = useState<ShipShort[]>([]);
-  const [filteredShips, setFilteredShips] = useState<ShipShort[]>([]);
   const [missions, setMissions] = useState<ShipMissionShort[]>([]);
 
   useEffect(() => {
     fetchData('ships').then((data: ShipShort[]) => {
       setShips(data);
-      setFilteredShips(data);
     });
   }, []);
 
@@ -37,7 +35,7 @@ export default function Ships() {
     setMissions(missions);
   }
 
-  const shipsList = filteredShips.map((ship: ShipShort) => (
+  const shipsList = ships.map((ship: ShipShort) => (
     <tr key={ship.ship_id} className='table-row'>
       <td>{ship.ship_name}</td>
       <td>{ship.ship_type}</td>
