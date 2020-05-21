@@ -1,0 +1,13 @@
+.data-field {
+  margin: 0.75em 0;
+
+  display: flex;
+
+  width: 100%;
+
+  &__label {
+    padding-right: 0.5em;
+
+    text-transform: capitalize;
+  }
+}

@@ -1,0 +1,64 @@
+.rocket {
+  margin: 25px 70px 50px;
+
+  width: 120px;
+  height: 400px;
+
+  &__container {
+    position: relative;
+    display: flex;
+
+    width: 70px;
+    height: 350px;
+  }
+
+  &__size-label {
+    position: relative;
+
+    height: 1.6em;
+
+    background-color: #fff;
+  }
+
+  &__height-label {
+    top: calc(350px / 2);
+    right: -45px;
+  }
+
+  &__diameter-label {
+    bottom: -325px;
+    right: 50px;
+  }
+
+  &__size-view {
+    position: absolute;
+    border: 1px solid #638ede;
+  }
+
+  &__diameter {
+    bottom: -25px;
+
+    width: 28px;
+    height: 320px;
+
+    border-top: none;
+  }
+
+  &__height {
+    left: 12px;
+
+    display: flex;
+
+    height: 350px;
+    width: 100px;
+
+    border-left: none;
+  }
+}
+
+.app__theme-dark {
+  .rocket__diameter-label,
+  .rocket__height-label {
+    background-color: #272727;
+  }
+}

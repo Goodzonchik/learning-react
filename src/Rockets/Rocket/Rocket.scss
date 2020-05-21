@@ -2,14 +2,14 @@
   padding: 0 20px;
 }
 
-.rocket-fields-container {
+.about-rocket {
   display: flex;
   justify-content: space-around;
-}
 
-.rocket-fields {
-  padding-top: 1em;
+  &__fields {
+    padding-top: 1em;
 
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+  }
 }

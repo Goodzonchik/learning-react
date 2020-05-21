@@ -24,13 +24,13 @@ export default function ShipMissionModal({
   return (
     <div className='overlay'>
       <div className='modal'>
-        <div className='modal-head'>
+        <div className='modal__head'>
           <h3>Mission</h3>
           <h3 onClick={close} className='close'>
             &times;
           </h3>
         </div>
-        <div className='modal-body'>
+        <div className='modal__body'>
           <table className='table'>
             <thead className='table-head'>
               <tr>

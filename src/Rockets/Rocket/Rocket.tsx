@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { fetchData } from '../../Shared/Utils/dataHelpers';
-import ItemField from '../../Shared/ItemField/ItemField';
-import RocketSize from '../../Shared/RocketSize/RocketSize';
-import Galery from '../../Shared/Galery/Galery/Galery';
-import Loader from '../../Shared/Loader';
-import { pint, money, bool, size } from '../../Shared/Utils/formatHelpers';
+import { fetchData } from '../../Components/Utils/dataHelpers';
+import ItemField from '../../Components/ItemField/ItemField';
+import RocketSize from '../../Components/RocketSize/RocketSize';
+import Galery from '../../Components/Galery/Galery/Galery';
+import Loader from '../../Components/Loader/Loader';
+import { pint, money, bool, size } from '../../Components/Utils/formatHelpers';
 
 import './Rocket.scss';
 
@@ -53,13 +53,13 @@ export default function Rocket() {
             <h2>{rocket.rocket_name}</h2>
             <div>{rocket.description}</div>
           </div>
-          <div className='rocket-fields-container'>
+          <div className='about-rocket'>
             <RocketSize
               diameter={size(rocket.diameter)}
               height={size(rocket.height)}
             ></RocketSize>
 
-            <div className='rocket-fields'>
+            <div className='about-rocket__fields'>
               <ItemField
                 data={{ title: 'company', value: rocket.company }}
               ></ItemField>

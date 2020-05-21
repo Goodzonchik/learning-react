@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import { fetchData } from './Shared/Utils/dataHelpers';
-import ItemField from './Shared/ItemField/ItemField';
-import Loader from './Shared/Loader';
-import { money, pint } from './Shared/Utils/formatHelpers';
+import { fetchData } from './Components/Utils/dataHelpers';
+import ItemField from './Components/ItemField/ItemField';
+import Loader from './Components/Loader/Loader';
+import { money, pint } from './Components/Utils/formatHelpers';
 
 interface AboutCompany {
   name: string;
@@ -29,7 +29,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className={'container'}>
+    <>
       {info ? (
         <>
           <h2>{info.name}</h2>
@@ -59,6 +59,6 @@ export default function About() {
       ) : (
         <Loader />
       )}
-    </div>
+    </>
   );
 }

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Bar, BarChart, XAxis, Tooltip, CartesianGrid } from 'recharts';
 
-import { fetchData } from '../Shared/Utils/dataHelpers';
-import Loader from '../Shared/Loader';
+import { fetchData } from '../Components/Utils/dataHelpers';
+import Loader from '../Components/Loader/Loader';
+
+import './Payloads.scss';
 
 interface PayloadModel {
   payload_id: string;
@@ -34,13 +36,7 @@ export default function Payloads() {
   }, []);
 
   return (
-    <div
-      className='entity-container'
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
+    <div className='payload-container'>
       {payloads.length > 0 ? (
         <BarChart width={900} height={500} data={payloads}>
           <XAxis dataKey='name' />

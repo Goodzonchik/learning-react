@@ -7,15 +7,13 @@ export default function EventContainer() {
   const match = useRouteMatch();
 
   return (
-    <div className='entity-container'>
-      <Switch>
-        <Route path={`${match.path}/:eventId`}>
-          <Event />
-        </Route>
-        <Route path={match.path}>
-          <Events />
-        </Route>
-      </Switch>
-    </div>
+    <Switch>
+      <Route path={`${match.path}/:eventId`}>
+        <Event />
+      </Route>
+      <Route path={match.path}>
+        <Events />
+      </Route>
+    </Switch>
   );
 }

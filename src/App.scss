@@ -6,29 +6,32 @@
 
   background-color: #fff;
 }
-.dark {
-  background-color: #272727;
-  color: #c5c5c5;
-
-  .header {
-    .form-button {
-      background-color: #272727;
-      color: #c5c5c5;
-    }
-  }
-}
 
 .content {
   margin-bottom: 4em;
 
-  .header {
+  &__header {
     padding: 1em 2em 0 2em;
-    display: flex;
-    justify-content: space-between;
 
-    .form-button {
-      font-size: 1.25em;
-      line-height: 1.25em;
-    }
+    display: flex;
+
+    justify-content: space-between;
+  }
+
+  &__form-button {
+    font-size: 1.25em;
+    line-height: 1.25em;
+  }
+}
+
+.app__theme-dark {
+  &.form-button {
+    background-color: #272727;
+    color: #c5c5c5;
+  }
+
+  &.app {
+    background-color: #272727;
+    color: #c5c5c5;
   }
 }

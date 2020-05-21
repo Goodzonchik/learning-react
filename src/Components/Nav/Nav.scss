@@ -1,0 +1,40 @@
+.nav {
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+
+  &__link {
+    margin: 0.5rem 1rem;
+    padding: 0.5rem;
+
+    font-size: 1.25rem;
+  }
+
+  &_active {
+    color: #e15b64;
+
+    &:hover {
+      color: #c10000;
+    }
+  }
+}
+
+.app__theme-dark {
+  .nav__link a {
+    color: #0095ff;
+
+    &:hover {
+      color: #5d9cd2;
+    }
+  }
+
+  a.nav__link_active {
+    color: #b4c8ff;
+
+    &:hover {
+      color: #5d9cd2;
+    }
+  }
+}

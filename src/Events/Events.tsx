@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 
-import { fetchData } from '../Shared/Utils/dataHelpers';
-import Loader from '../Shared/Loader';
+import { fetchData } from '../Components/Utils/dataHelpers';
+import Loader from '../Components/Loader/Loader';
 
 interface EventShort {
   id: string;
@@ -21,7 +21,7 @@ export default function Events() {
 
   const eventList = events.map((event: EventShort) => (
     <Link to={`${match.path}/${event.id}`} key={event.id}>
-      <div className='list-container-item'>{event.title}</div>
+      <div className='list-container__item'>{event.title}</div>
     </Link>
   ));
 

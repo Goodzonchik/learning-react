@@ -1,118 +1,100 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
-import './FeedBack.scss';
-import FieldError, { ErrorTypes } from '../Shared/FieldError/FieldError';
-import { FormState } from './FeedBackContainer';
+import { Prompt } from 'react-router-dom';
+import FeedBackForm from './FeedBackForm';
 
-const subjects = [
-  { value: 1, title: 'Sentence' },
-  { value: 2, title: 'Error on site' },
-];
+const defaultForm = {
+  form: {
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    subject: 1,
+    subscribe: false,
+  },
+  status: {
+    valid: false,
+    submited: false,
+    nameRequired: false,
+    emailRequired: false,
+    messageRequired: false,
+    loading: false,
+  },
+};
 
-type SubjectType = typeof subjects[0];
+export type FormState = typeof defaultForm;
 
-interface FeedBackModel {
-  form: FormState;
-  change: (state: FormState) => void;
-  submit: () => void;
-  clear: () => void;
-}
+export default function FeedBack() {
+  const [form, setForm] = useState<FormState>(defaultForm);
 
-export default function FeedBack({
-  form,
-  change,
-  submit,
-  clear,
-}: FeedBackModel) {
-  function handleChange(event: any) {
-    const input: any = {};
-    input[event?.target?.name] = event?.target?.value;
-    change({ form: { ...form.form, ...input }, status: form.status });
-  }
+  const changeForm = useCallback(
+    (value: FormState) => {
+      const newForm = {
+        form: value.form,
+        status: {
+          ...form.status,
+          valid: !!form.form.name && !!form.form.email && !!form.form.message,
+          nameRequired: !form.form.name,
+          emailRequired: !form.form.email,
+          messageRequired: !form.form.message,
+        },
+      };
+      setForm(newForm);
+    },
+    [form]
+  );
+
+  const clearForm = useCallback(() => {
+    setForm(defaultForm);
+  }, []);
+
+  const submitForm = useCallback(() => {
+    const newForm = {
+      form: form.form,
+      status: {
+        ...form.status,
+        submited: true,
+        valid: !!form.form.name && !!form.form.email && !!form.form.message,
+        nameRequired: !form.form.name,
+        emailRequired: !form.form.email,
+        messageRequired: !form.form.message,
+      },
+    };
+    newForm.status.submited = true;
+
+    if (newForm.status.valid) {
+      newForm.status.loading = true;
+      setForm(newForm);
+      setTimeout(() => {
+        clearForm();
+      }, 2000);
+    } else {
+      setForm(newForm);
+    }
+  }, [form, clearForm]);
+
+  const hasChanges = Boolean(
+    form.form.name ||
+      form.form.email ||
+      form.form.phone ||
+      form.form.message ||
+      form.form.subject !== 1
+  );
 
   return (
-    <div className={'container'}>
-      <h2>Feed back</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <div className='input-wrapper'>
-          <label className='required'>Name</label>
-          <input
-            type='text'
-            value={form.form.name}
-            name='name'
-            onChange={handleChange}
-            className='form-input'
-          />
-          {form.status.nameRequired && form.status.submited ? (
-            <FieldError type={ErrorTypes.required} />
-          ) : null}
-        </div>
-        <div className='input-wrapper'>
-          <label>Phone</label>
-          <input
-            type='text'
-            value={form.form.phone}
-            name='phone'
-            onChange={handleChange}
-            className='form-input'
-          />
-        </div>
-        <div className='input-wrapper'>
-          <label className='required'>Email</label>
-          <input
-            type='text'
-            value={form.form.email}
-            name='email'
-            onChange={handleChange}
-            className='form-input'
-          />
-          {form.status.emailRequired && form.status.submited ? (
-            <FieldError type={ErrorTypes.required} />
-          ) : null}
-        </div>
-        <div className='input-wrapper'>
-          <label>Select subject</label>
-          <select className='form-input' name='subject' onChange={handleChange}>
-            {subjects.map((subject: SubjectType) => (
-              <option key={subject.value} value={subject.value}>
-                {subject.title}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className='input-wrapper'>
-          <label className='required'>Message</label>
-          <textarea
-            className='form-input form-textarea'
-            value={form.form.message}
-            name='message'
-            onChange={handleChange}
-          ></textarea>
-          {form.status.messageRequired && form.status.submited ? (
-            <FieldError type={ErrorTypes.required} />
-          ) : null}
-        </div>
-        <div className='button-row'>
-          <button
-            className='form-button'
-            disabled={form.status.loading}
-            onClick={clear}
-          >
-            Clear
-          </button>
-          <button
-            className='form-button'
-            disabled={form.status.loading}
-            onClick={submit}
-          >
-            Submit
-          </button>
-        </div>
-      </form>
-    </div>
+    <>
+      <FeedBackForm
+        form={form}
+        change={changeForm}
+        clear={clearForm}
+        submit={submitForm}
+      ></FeedBackForm>
+      <Prompt
+        when={hasChanges}
+        message={
+          'You have unsent data; upon transition, they will be sent to a black hole. Are you sure you want to switch?'
+        }
+      />
+    </>
   );
 }

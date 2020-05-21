@@ -8,15 +8,13 @@ export default function RocketContainer() {
   const match = useRouteMatch();
 
   return (
-    <div className='entity-container'>
-      <Switch>
-        <Route path={`${match.path}/:rocketId`}>
-          <Rocket />
-        </Route>
-        <Route path={match.path}>
-          <Rockets />
-        </Route>
-      </Switch>
-    </div>
+    <Switch>
+      <Route path={`${match.path}/:rocketId`}>
+        <Rocket />
+      </Route>
+      <Route path={match.path}>
+        <Rockets />
+      </Route>
+    </Switch>
   );
 }

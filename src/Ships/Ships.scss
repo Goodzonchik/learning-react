@@ -3,23 +3,23 @@
 
   border-spacing: 0;
 
-  .table-head {
+  &__head {
     font-size: 1.5em;
     background-color: #eaeaea;
 
-    td {
+    &-cell {
       padding: 0.25em;
     }
   }
 
-  .table-row {
+  &__row {
     background-color: #fbfbfb;
 
     &:hover {
       background-color: #e8e8e8;
     }
 
-    td {
+    &-cell {
       padding: 0.5em;
 
       border-bottom: 1px solid #cecece;
@@ -27,14 +27,14 @@
   }
 }
 
-.dark {
+.app__theme-dark {
   .table {
-    .table-head {
+    &__head {
       background-color: #5d5d5d;
       color: #d8d8d8;
     }
 
-    .table-row {
+    &__row {
       background-color: #424242;
 
       &:hover {

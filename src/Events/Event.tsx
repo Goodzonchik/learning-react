@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchData } from '../Shared/Utils/dataHelpers';
-import ItemField from '../Shared/ItemField/ItemField';
-import Loader from '../Shared/Loader';
+
+import { fetchData } from '../Components/Utils/dataHelpers';
+import ItemField from '../Components/ItemField/ItemField';
+import Loader from '../Components/Loader/Loader';
 
 interface Event {
   title: string;

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import Nav from './Shared/Nav/Nav';
-import Footer from './Shared/Footer/Footer';
-import ThemeButton from './Shared/ThemeButton/ThemeButton';
+import Nav from './Components/Nav/Nav';
+import Footer from './Components/Footer/Footer';
+import ThemeButton from './Components/ThemeButton/ThemeButton';
 
 import './App.scss';
-import RouterOutlet from './Shared/RouterOutlet';
+import RouterOutlet from './Components/RouterOutlet';
 
 const initDarkModeValue =
   localStorage.getItem('darkMode') === 'true' ? true : false;
@@ -21,12 +21,16 @@ export default function App() {
   }
 
   return (
-    <div className={darkMode ? 'app dark' : 'app'}>
+    <div className={darkMode ? 'app app__theme-dark' : 'app'}>
       <div className='content'>
         <Router>
-          <div className={'header'}>
+          <div className='content__header'>
             <Nav />
-            <ThemeButton isDarkMode={darkMode} changeMode={toogleTheme} />
+            <ThemeButton
+              customClassName='app__theme-dark'
+              isDarkMode={darkMode}
+              changeMode={toogleTheme}
+            />
           </div>
           <RouterOutlet />
         </Router>
