@@ -21,18 +21,19 @@ interface Rocket {
   boosters: number;
   flickr_images: string[];
   first_flight: string;
-  diameter: {
-    feet: number;
-    meters: number;
-  };
-  height: {
-    feet: number;
-    meters: number;
-  };
-  mass: {
-    kg: number;
-    lb: number;
-  };
+  diameter: RocketProportion;
+  height: RocketProportion;
+  mass: RocketMass;
+}
+
+interface RocketProportion {
+  feet: number;
+  meters: number;
+}
+
+interface RocketMass {
+  kg: number;
+  lb: number;
 }
 
 export default function Rocket() {

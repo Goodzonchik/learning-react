@@ -12,11 +12,13 @@ interface AboutCompany {
   founded: string;
   employees: number;
   valuation: number;
-  headquarters: {
-    state: string;
-    city: string;
-    address: string;
-  };
+  headquarters: Headquarters;
+}
+
+interface Headquarters {
+  state: string;
+  city: string;
+  address: string;
 }
 
 export default function About() {

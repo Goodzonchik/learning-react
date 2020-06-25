@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface ShipMissionsShort {
+interface ModalShipMissionShort {
   missions: ShipMissionShort[];
   close: () => void;
 }
@@ -13,7 +13,7 @@ interface ShipMissionShort {
 export default function ShipMissionModal({
   missions,
   close,
-}: ShipMissionsShort) {
+}: ModalShipMissionShort) {
   const shipsList = missions.map((mission: ShipMissionShort) => (
     <tr key={mission.name}>
       <td>{mission.name}</td>
