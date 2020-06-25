@@ -10,7 +10,7 @@ export default function GaleryFullscreenImage({
   closeFullscreen,
 }: GaleryFullscreenModel) {
   return (
-    <div className='galery__fullscreen-overlay' onClick={closeFullscreen}>
+    <div className='overlay' onClick={closeFullscreen}>
       <img className='galery__fullscreen-image' src={image} alt={image}></img>
     </div>
   );
