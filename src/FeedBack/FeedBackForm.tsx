@@ -48,9 +48,10 @@ export default function FeedBackForm({
             onChange={handleChange}
             className='feedback__input'
           />
-          {form.status.nameRequired && form.status.submited ? (
-            <FieldError type={ErrorTypes.required} />
-          ) : null}
+          <FieldError
+            type={ErrorTypes.required}
+            expression={form.status.nameRequired && form.status.submited}
+          />
         </div>
         <div className='feedback__input-wrapper'>
           <label>Phone</label>
@@ -71,9 +72,10 @@ export default function FeedBackForm({
             onChange={handleChange}
             className='feedback__input'
           />
-          {form.status.emailRequired && form.status.submited ? (
-            <FieldError type={ErrorTypes.required} />
-          ) : null}
+          <FieldError
+            type={ErrorTypes.required}
+            expression={form.status.emailRequired && form.status.submited}
+          />
         </div>
         <div className='feedback__input-wrapper'>
           <label>Select subject</label>
@@ -97,9 +99,10 @@ export default function FeedBackForm({
             name='message'
             onChange={handleChange}
           ></textarea>
-          {form.status.messageRequired && form.status.submited ? (
-            <FieldError type={ErrorTypes.required} />
-          ) : null}
+          <FieldError
+            type={ErrorTypes.required}
+            expression={form.status.messageRequired && form.status.submited}
+          />
         </div>
         <div className='feedback__button-row'>
           <button
