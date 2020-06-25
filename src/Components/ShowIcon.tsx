@@ -1,8 +1,9 @@
 import React from 'react';
+import { TODO_ANY } from './Utils/developHelpers';
 
 interface IconModel {
-  action: (params?: any) => void;
-  args?: any;
+  action: (params?: TODO_ANY) => void;
+  args?: TODO_ANY;
 }
 
 export default function ShowIcon({ action, args }: IconModel) {

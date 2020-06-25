@@ -3,6 +3,7 @@ import React from 'react';
 import './FeedBackForm.scss';
 import FieldError, { ErrorTypes } from '../Components/FieldError/FieldError';
 import { FormState } from './FeedBack';
+import { TODO_ANY } from '../Components/Utils/developHelpers';
 
 const subjects = [
   { value: 1, title: 'Sentence' },
@@ -24,8 +25,8 @@ export default function FeedBackForm({
   submit,
   clear,
 }: FeedBackModel) {
-  function handleChange(event: any) {
-    const input: any = {};
+  function handleChange(event: TODO_ANY) {
+    const input: TODO_ANY = {};
     input[event?.target?.name] = event?.target?.value;
     change({ form: { ...form.form, ...input }, status: form.status });
   }
