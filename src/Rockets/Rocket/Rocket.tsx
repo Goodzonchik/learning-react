@@ -31,7 +31,7 @@ interface RocketProportion {
   meters: number;
 }
 
-interface RocketMass {
+interface RocketMss {
   kg: number;
   lb: number;
 }
