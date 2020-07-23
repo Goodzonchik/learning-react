@@ -3,7 +3,7 @@ import React from 'react';
 import './FeedBackForm.scss';
 import FieldError, { ErrorTypes } from '../Components/FieldError/FieldError';
 import { FormState } from './FeedBack';
-import { TODO_ANY } from '../Components/Utils/developHelpers';
+import TODO_ANY from '../Components/Utils/developHelpers';
 
 const subjects = [
   { value: 1, title: 'Sentence' },

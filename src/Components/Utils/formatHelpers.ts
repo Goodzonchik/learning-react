@@ -17,4 +17,4 @@ export const pint = (value: number = 0): string => {
 export const bool = (value: boolean): string => value.toString();
 
 export const size = (size: { meters: number; feet: number }): string =>
-  `${size.meters}meters/${size.feet}feet`;
+  `${size.meters} meters/${size.feet} feet`;

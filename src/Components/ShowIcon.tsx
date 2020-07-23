@@ -1,5 +1,5 @@
 import React from 'react';
-import { TODO_ANY } from './Utils/developHelpers';
+import TODO_ANY from './Utils/developHelpers';
 
 interface IconModel {
   action: (params?: TODO_ANY) => void;
