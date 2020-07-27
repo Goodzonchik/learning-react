@@ -5,18 +5,18 @@ import './Nav.scss';
 
 export default function Nav() {
   const links = [
-    'about',
-    'history',
-    'rockets',
-    'ships',
-    'payloads',
-    'feedback',
+    'About',
+    'History',
+    'Rockets',
+    'Ships',
+    'Payloads',
+    'Feedback',
   ];
 
   const linkList = links.map((item) => (
     <li className='nav__link' key={item}>
       <NavLink to={`/${item}`} activeClassName='nav__link_active'>
-        <span style={{ textTransform: 'capitalize' }}>{item}</span>
+        {item}
       </NavLink>
     </li>
   ));
