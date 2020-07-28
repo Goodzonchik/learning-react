@@ -10,6 +10,7 @@ export default function Nav() {
     'Rockets',
     'Ships',
     'Payloads',
+    'Next',
     'Feedback',
   ];
 

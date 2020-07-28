@@ -10,6 +10,7 @@ import FeedBack from '../FeedBack/FeedBack';
 const RocketContainer = React.lazy(() => import('../Rockets/RocketContainer'));
 const EventContainer = React.lazy(() => import('../Events/EventContainer'));
 const Ships = React.lazy(() => import('../Ships/Ships'));
+const NextLaunch = React.lazy(() => import('../Next/NextLaunch'));
 
 export default function RouterOutlet() {
   return (
@@ -37,6 +38,11 @@ export default function RouterOutlet() {
         <Route path='/payloads'>
           <Suspense fallback={<Loader />}>
             <Payloads />
+          </Suspense>
+        </Route>
+        <Route path='/next'>
+          <Suspense fallback={<Loader />}>
+            <NextLaunch />
           </Suspense>
         </Route>
         <Route path='/feedback'>
