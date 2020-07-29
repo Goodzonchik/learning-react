@@ -44,13 +44,17 @@ const splitDay = (day: number | number[], currentDate: Date) => {
 };
 
 const getWeek = (week: any[], currentDate: Date) => {
-  const startIndex = new Date(
+  const weekStartIndex = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth(),
     1
   ).getDay();
 
-  return week.slice(startIndex - 5, startIndex + 2).map((day, index) => {
+  const weekShift = [0, 5, 3, 1, -1, -3, -5];
+
+  const startIndex = weekStartIndex + weekShift[weekStartIndex];
+
+  return week.slice(startIndex, startIndex + 7).map((day, index) => {
     if (!day) {
       return (
         <div
