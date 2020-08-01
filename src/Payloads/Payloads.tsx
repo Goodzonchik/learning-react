@@ -1,44 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Bar, BarChart, XAxis, Tooltip, CartesianGrid } from 'recharts';
 
-import { fetchData } from '../Components/Utils/dataHelpers';
 import Loader from '../Components/Loader/Loader';
 
 import './Payloads.scss';
 
+import { useQuery, gql } from '@apollo/client';
+
+const payloadsData = gql`
+  query {
+    payloads {
+      id
+      payload_type
+      payload_mass_kg
+    }
+  }
+`;
+
 interface PayloadModel {
-  payload_id: string;
+  id: string;
   payload_type: string;
   payload_mass_kg: number;
 }
 
-interface ChartModel {
-  name: string;
-  value: number;
-}
+const geyPayloads = (payloads: PayloadModel[]) => {
+  return payloads
+    .filter((payload: PayloadModel) => payload.payload_mass_kg)
+    .map((payload: PayloadModel) => {
+      return {
+        name: `${payload.id} / ${payload.payload_type}`,
+        value: payload.payload_mass_kg,
+      };
+    });
+};
 
 export default function Payloads() {
-  const [payloads, setPayloads] = useState<ChartModel[]>([]);
-
-  useEffect(() => {
-    fetchData('payloads').then((data: PayloadModel[]) => {
-      setPayloads(
-        data
-          .filter((payload: PayloadModel) => payload.payload_mass_kg)
-          .map((payload: PayloadModel) => {
-            return {
-              name: `${payload.payload_id} / ${payload.payload_type}`,
-              value: payload.payload_mass_kg,
-            };
-          })
-      );
-    });
-  }, []);
+  const { data } = useQuery(payloadsData);
 
   return (
     <div className='payload-container'>
-      {payloads.length > 0 ? (
-        <BarChart width={900} height={500} data={payloads}>
+      {data ? (
+        <BarChart width={900} height={500} data={geyPayloads(data.payloads)}>
           <XAxis dataKey='name' />
           <Tooltip />
           <CartesianGrid stroke='#f5f5f5' />

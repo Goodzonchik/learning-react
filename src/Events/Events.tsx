@@ -1,8 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 
-import { fetchData } from '../Components/Utils/dataHelpers';
+import { useQuery, gql } from '@apollo/client';
+
 import Loader from '../Components/Loader/Loader';
+
+const historyData = gql`
+  query {
+    histories {
+      id
+      title
+    }
+  }
+`;
 
 interface EventShort {
   id: string;
@@ -11,23 +21,19 @@ interface EventShort {
 
 export default function Events() {
   const match = useRouteMatch();
-  const [events, setEvents] = useState<EventShort[]>([]);
-
-  useEffect(() => {
-    fetchData('history').then((data: EventShort[]) => {
-      setEvents(data);
-    });
-  }, []);
-
-  const eventList = events.map((event: EventShort) => (
-    <Link to={`${match.path}/${event.id}`} key={event.id}>
-      <div className='list-container__item'>{event.title}</div>
-    </Link>
-  ));
+  const { data } = useQuery(historyData);
 
   return (
     <div className='list-container'>
-      {events.length ? eventList : <Loader />}
+      {data ? (
+        data.histories.map((event: EventShort) => (
+          <Link to={`${match.path}/${event.id}`} key={event.id}>
+            <div className='list-container__item'>{event.title}</div>
+          </Link>
+        ))
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 }

@@ -1,33 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 
-import { fetchData } from '../Components/Utils/dataHelpers';
 import Loader from '../Components/Loader/Loader';
 
+import { useQuery, gql } from '@apollo/client';
+
+const rocketData = gql`
+  query {
+    rockets {
+      id
+      name
+    }
+  }
+`;
+
 interface RocketShort {
-  rocket_name: string;
-  rocket_id: string;
+  name: string;
+  id: string;
 }
 
 export default function Rockets() {
   const match = useRouteMatch();
-  const [rockets, setRockets] = useState<RocketShort[]>([]);
 
-  useEffect(() => {
-    fetchData('rockets').then((data: RocketShort[]) => {
-      setRockets(data);
-    });
-  }, []);
-
-  const rocketList = rockets.map((rocket: RocketShort) => (
-    <Link to={`${match.path}/${rocket.rocket_id}`} key={rocket.rocket_id}>
-      <div className='list-container__item'> {rocket.rocket_name}</div>
-    </Link>
-  ));
+  const { data } = useQuery(rocketData);
 
   return (
     <div className='list-container'>
-      {rockets.length ? rocketList : <Loader />}
+      {data ? (
+        data.rockets.map((rocket: RocketShort) => (
+          <Link to={`${match.path}/${rocket.id}`} key={rocket.id}>
+            <div className='list-container__item'> {rocket.name}</div>
+          </Link>
+        ))
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 }
