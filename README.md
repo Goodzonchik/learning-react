@@ -7,7 +7,7 @@
 
 ### Код
 
-Typescript, ReactJs
+Typescript, ReactJs, GraphQl и Apollo Client
 
 ### Стилизация
 
